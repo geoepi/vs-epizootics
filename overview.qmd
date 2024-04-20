@@ -1,0 +1,229 @@
+---
+title: "Overview"
+format:
+  html: 
+    df-print: kable
+    code-fold: show
+    code-summary: "Hide code"
+    code-overflow: wrap
+    toc-title: Page Contents
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+    html-math-method: katex
+    smooth-scroll: true
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+## Load Libraries
+```{r}
+library(tidyverse)
+library(raster)
+library(terra)
+library(raptr)
+library(rgeos)
+library(pals)
+library(here)
+
+library(INLA)
+#install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE)
+```
+
+## Custom Functions
+```{r}
+source(here("./R/utilities.R"))
+source_dir("./R")
+```
+
+
+## Get Boundaries
+```{r}
+domain <- vect(here("assets/domain"))
+
+obs_stack.r <- rast(
+  list(
+    rast(here("assets/rf_2014.tif")),
+    rast(here("assets/rf_2015.tif"))
+       )
+)
+```
+
+## Random Points
+```{r}
+sample_2014 <- as.data.frame(
+  raptr::randomPoints(obs_stack.r[[1]],
+                      n = 600, prob = TRUE)) %>%
+  mutate(year = 2014,
+         set = "sim")
+
+sample_2015 <- as.data.frame(
+  raptr::randomPoints(obs_stack.r[[2]],
+                      n = 900, prob = TRUE)) %>%
+  mutate(year = 2015,
+         set = "sim")
+```
+
+## View 
+```{r}
+join_sims <- rbind(sample_2014, sample_2015)
+
+plot_rast_panels(obs_stack.r, domain, join_sims, brewer.ylorbr(4))
+```
+
+## Spatial Triangulation  
+```{r}
+hull <- st_convex_hull(
+  st_buffer(
+    st_union(
+      st_as_sf(domain)),
+    100))
+
+dom_bnds <- inla.sp2segment(as(hull, "Spatial"))
+
+set.seed(1976)
+mesh.dom <- inla.mesh.2d(boundary = dom_bnds, 
+                        loc = join_sims[,c("x","y")],
+                        cutoff = 20, 
+                        max.edge = c(60, 300),
+                        offset = c(100,250),
+                        min.angle = 30) 
+
+mesh.dom$n
+plot(mesh.dom, 
+     draw.vertices = TRUE,
+     vertex.color = c("gray60"), lwd=1.5)
+```
+
+## Node Coordinates
+```{r}
+dd = as.data.frame(cbind(mesh.dom$loc[,1], 
+                         mesh.dom$loc[,2]))
+
+names(dd) = c("x", "y")
+
+dd$set <- "node"
+
+head(dd)
+```
+
+## Copy to Year
+```{r}
+sample_2014 <- rbind(sample_2014, mutate(dd, year = 2014)) %>%
+  mutate(
+    pred_var = rnorm(n = n(), mean = 0, sd = 1),
+    obs = ifelse(set == "node", 0, 1)
+  )
+
+sample_2015 <- rbind(sample_2015, mutate(dd, year = 2015)) %>%
+  mutate(
+    pred_var = rnorm(n = n(), mean = 0.5, sd = 1),
+    obs = ifelse(set == "node", 0, 1)
+  )
+
+head(sample_2015)
+```
+
+## Cluster Distance
+```{r warning=FALSE}
+# 2014
+split_factor <- as.factor(sample_2014$set)
+
+NN <- as.data.frame(
+  spatstat.geom::nndist(sample_2014[,c("x","y")], by = split_factor, k = 1)
+)["sim"]
+
+sample_2014$NN <- NN$sim
+
+
+
+# 2015
+split_factor <- as.factor(sample_2015$set)
+
+NN <- as.data.frame(
+  spatstat.geom::nndist(sample_2015[,c("x","y")], by = split_factor, k = 1)
+)["sim"]
+
+sample_2015$NN <- NN$sim
+
+range(sample_2015$NN)
+```
+
+## Projection  
+
+### Random Field
+```{r}
+combined_data = rbind(sample_2014, sample_2015)
+
+combined_data$time_step <- as.integer(as.factor(combined_data$year))
+
+
+k = length(unique(combined_data$time_step))
+
+locs = cbind(combined_data$x, combined_data$y)
+
+A.pf = inla.spde.make.A(mesh.dom, 
+                          alpha = 2,
+                          loc=locs,
+                          group = combined_data$time_step)
+
+
+spde0 = inla.spde2.pcmatern(mesh.dom, alpha = 2,
+                            prior.range=c(250, 0.01),  
+                            prior.sigma=c(1, 0.01),
+                            constr = TRUE)
+
+Field.pf = inla.spde.make.index("Field.pf", 
+                               spde0$n.spde,
+                               n.group=k)
+
+pf.lst = list(c(Field.pf, 
+                list(intercept1 = 1)), 
+                list(Year1 = combined_data[,"year"],
+                     Year2 = combined_data[,"year"])) 
+
+pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
+                                A = list(A.pf, 1), 
+                          effects = pf.lst,   
+                              tag = "pf.0")
+
+```
+
+### Estimate
+```{r}
+locs = cbind(combined_data$x, combined_data$y)
+
+A.est = inla.spde.make.A(mesh.dom, 
+                         alpha = 2,
+                         loc=locs,
+                         group = combined_data$time_step)
+
+Field.est = inla.spde.make.index("Field.est",
+                                 spde0$n.spde,
+                                 n.group=k)
+
+Field.est.c = inla.spde.make.index("Field.est.c", 
+                                   spde0$n.spde,
+                                   n.group=k)
+
+est.lst = list(c(Field.est,
+                 Field.est.c,
+                list(intercept2 = 1)), 
+                list(pred_var = combined_data[,"pred_var"],
+                     NN = combined_data[,"NN"]))
+
+est.stk = inla.stack(data = list(Y = cbind(NA, combined_data$OBS),
+                                 e = combined_data$s.Horses),
+                                 A = list(A.div, 1), 
+                           effects = div.lst,   
+                               tag = "div.15")
+
+
+
+Joint.stk = inla.stack(pf.stk, div.stk)
+
+
+```
+
