@@ -126,6 +126,7 @@ sample_2015 <- rbind(sample_2015, mutate(dd, year = 2015)) %>%
 head(sample_2015)
 ```
 
+
 ## Cluster Distance
 ```{r warning=FALSE}
 # 2014
@@ -135,7 +136,7 @@ NN <- as.data.frame(
   spatstat.geom::nndist(sample_2014[,c("x","y")], by = split_factor, k = 1)
 )["sim"]
 
-sample_2014$NN <- NN$sim
+sample_2014$NN <- round(NN$sim, 0)
 
 
 
@@ -146,20 +147,46 @@ NN <- as.data.frame(
   spatstat.geom::nndist(sample_2015[,c("x","y")], by = split_factor, k = 1)
 )["sim"]
 
-sample_2015$NN <- NN$sim
+sample_2015$NN <- round(NN$sim, 0)
 
 range(sample_2015$NN)
 ```
+
+
+## Combine Data
+```{r}
+combined_data = rbind(sample_2014, sample_2015)
+```
+
+## Exposure
+```{r}
+host_pop.r <- rast(here("assets/host_pop.tif"))
+
+combined_data$host_pop <- extract(host_pop.r, combined_data[,c("x","y")])[,"host_pop"]
+combined_data$host_pop[is.na(combined_data$host_pop)] <- mean(combined_data$host_pop, na.rm=TRUE)
+
+range(combined_data$host_pop)
+```
+
+
+## Time Step
+```{r}
+combined_data$time_step <- as.integer(as.factor(combined_data$year))
+```
+
+## Split Pred Variable
+```{r}
+combined_data <- combined_data %>%
+  mutate(pred_var_14 = if_else(year == 2014, pred_var, NA),
+         pred_var_15 = if_else(year == 2015, pred_var, NA))
+```
+
+
 
 ## Projection  
 
 ### Random Field
 ```{r}
-combined_data = rbind(sample_2014, sample_2015)
-
-combined_data$time_step <- as.integer(as.factor(combined_data$year))
-
-
 k = length(unique(combined_data$time_step))
 
 locs = cbind(combined_data$x, combined_data$y)
@@ -168,7 +195,6 @@ A.pf = inla.spde.make.A(mesh.dom,
                           alpha = 2,
                           loc=locs,
                           group = combined_data$time_step)
-
 
 spde0 = inla.spde2.pcmatern(mesh.dom, alpha = 2,
                             prior.range=c(250, 0.01),  
@@ -181,8 +207,8 @@ Field.pf = inla.spde.make.index("Field.pf",
 
 pf.lst = list(c(Field.pf, 
                 list(intercept1 = 1)), 
-                list(Year1 = combined_data[,"year"],
-                     Year2 = combined_data[,"year"])) 
+                list(time_step1 = combined_data[,"time_step"],
+                     time_step2 = combined_data[,"time_step"])) 
 
 pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
                                 A = list(A.pf, 1), 
@@ -193,8 +219,6 @@ pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
 
 ### Estimate
 ```{r}
-locs = cbind(combined_data$x, combined_data$y)
-
 A.est = inla.spde.make.A(mesh.dom, 
                          alpha = 2,
                          loc=locs,
@@ -210,20 +234,85 @@ Field.est.c = inla.spde.make.index("Field.est.c",
 
 est.lst = list(c(Field.est,
                  Field.est.c,
-                list(intercept2 = 1)), 
-                list(pred_var = combined_data[,"pred_var"],
-                     NN = combined_data[,"NN"]))
+                 list(intercept2 = 1)), 
+                 list(pred_var_14 = combined_data[,"pred_var_14"],
+                      pred_var_15 = combined_data[,"pred_var_15"],
+                      NN = combined_data[,"NN"],
+                      time_step1 = combined_data[,"time_step"],
+                      time_step2 = combined_data[,"time_step"]))
 
-est.stk = inla.stack(data = list(Y = cbind(NA, combined_data$OBS),
-                                 e = combined_data$s.Horses),
-                                 A = list(A.div, 1), 
-                           effects = div.lst,   
-                               tag = "div.15")
+est.stk = inla.stack(data = list(Y = cbind(NA, combined_data$obs),
+                                 e = combined_data$host_pop),
+                                 A = list(A.est, 1), 
+                           effects = est.lst,   
+                               tag = "est.0")
 
 
 
-Joint.stk = inla.stack(pf.stk, div.stk)
+joint.stk = inla.stack(pf.stk, est.stk)
+```
+
+## Formula  
+```{r}
+pcprior1 = list(prec = list(prior="pc.prec", param = c(1, 0.01))) 
+hc1 = list(theta = list(prior = 'normal', param = c(0, 10)))
+ctr.g = list(model = 'iid', hyper = hc1)
+
+Formula.1 = Y ~ -1 + intercept1 + 
+                   intercept2 +
+          				f(Field.pf,
+          				  model=spde0,
+          				  group = Field.pf.group, 
+                            control.group=ctr.g) +
+                  f(Field.est,
+                    copy = "Field.pf", 
+          				  group = Field.est.group, 
+                            fixed = FALSE,
+                            hyper = hc1) + 
+         				  f(NN,   
+                    model="rw1", 
+                    constr=TRUE,
+         				    replicate = time_step1,
+                    scale.model=TRUE,
+         				    hyper=pcprior1) +
+                  pred_var_14 + pred_var_15 
+```
+
+# Run Model
+```{r}
+#theta1 = Model.pf$internal.summary.hyperpar$mean
+theta1 = c(4.597875, 4.474335, -1.232526, 0.165949, 2.538948, 5.608809, 1.867923)   
+
+
+Model.demo <- inla(Formula.1, 
+      				 num.threads = 12,
+      				 data = inla.stack.data(joint.stk), 
+      				 family = c("gaussian", "poisson"), 
+      				 verbose = TRUE,
+      				 E = inla.stack.data(joint.stk)$e,
+      				 control.fixed = list(prec = 1, prec.intercept=1), 
+      				 control.predictor = list(
+      										A = inla.stack.A(joint.stk), 
+      										compute = TRUE, 
+      										link = 1), 
+      				 #control.mode = list(restart = TRUE, theta = theta1),
+      				 control.inla = list(strategy="adaptive", 
+      									 int.strategy = "eb"),
+      				 control.compute=list(dic = TRUE, cpo = TRUE, waic = TRUE)) 				  
+
+summary(Model.demo) 
+save(list=c("Model.demo"), file=here("assets/test.RData"), version = 2)
+
+
+
+
+
+
 
 
 ```
+
+
+
+
 
