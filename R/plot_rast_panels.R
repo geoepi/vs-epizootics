@@ -1,24 +1,33 @@
-plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_name) {
+plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_name, center=FALSE) {
   
-  df1 <- as.data.frame(obs_stack.r[[1]], xy = TRUE, na.rm = TRUE, layer = 1)
+  df1 <- as.data.frame(raster_stack[[1]], xy = TRUE, na.rm = TRUE, layer = 1)
   names(df1)[3] <- "RF"
-  df2 <- as.data.frame(obs_stack.r[[2]], xy = TRUE, na.rm = TRUE, layer = 2)
+  df2 <- as.data.frame(raster_stack[[2]], xy = TRUE, na.rm = TRUE, layer = 2)
   names(df2)[3] <- "RF"
   
   # Combine the data frames and add an ID to distinguish the layers
   df1$year <- 2014
   df2$year <- 2015
-  combined_df <- rbind(df1, df2)
+  joined_df <- rbind(df1, df2)
   
   # Define the color palette from the pals package
   color_palette <- color_palette_name
   
   domain_fort <- fortify(as(domain_fort, "Spatial"))
   
+  min_RF <- floor(min(joined_df$RF, na.rm = TRUE))
+  max_RF <- ceiling(max(joined_df$RF, na.rm = TRUE))
+  
+  if(center == FALSE){
+    col_values = c(0, 0.05, 0.25, 1)
+  } else{
+    col_values = c(0, 0.25, 0.5, 1)
+  }
+  
   # Create the ggplot
-  gg <- ggplot(combined_df, aes(x = x, y = y, fill = RF)) +
+  gg <- ggplot(joined_df, aes(x = x, y = y, fill = RF)) +
     geom_raster(interpolate = TRUE) +
-    scale_fill_gradientn(colours = color_palette, limits = c(0, 1), values = c(0, 0.05, 0.25, 1)) +
+    scale_fill_gradientn(colours = color_palette, limits = c(min_RF, max_RF), values = col_values) +
     geom_polygon(data = domain_fort, aes(long,lat, group=group),
                  fill = "transparent", col="gray50", linewidth = 0.1) +
     geom_point(data = plot_sim,

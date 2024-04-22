@@ -21,7 +21,9 @@ editor_options:
 ## Load Libraries
 ```{r}
 library(tidyverse)
+library(tidyterra)
 library(raster)
+library(ggtree)
 library(terra)
 library(raptr)
 library(rgeos)
@@ -34,6 +36,8 @@ library(INLA)
 
 ## Custom Functions
 ```{r}
+set.seed(1976)
+
 source(here("./R/utilities.R"))
 source_dir("./R")
 ```
@@ -51,22 +55,43 @@ obs_stack.r <- rast(
 )
 ```
 
-## Random Points
+## Simulate Outbreak  
+  
+### SEIR-Vector Dynamics  
 ```{r}
-sample_2014 <- as.data.frame(
-  raptr::randomPoints(obs_stack.r[[1]],
-                      n = 600, prob = TRUE)) %>%
-  mutate(year = 2014,
-         set = "sim")
+seir_vector_14 <- seirsei_ode(Nh = 4100, # number of livestock hosts
+                           vect_mult = 250, # number of vectors per host
+                           obs_bias = 0.10, # proportion observed/detected
+                           targ_year = "2014" # to approximate dates 
+                           )
 
-sample_2015 <- as.data.frame(
-  raptr::randomPoints(obs_stack.r[[2]],
-                      n = 900, prob = TRUE)) %>%
-  mutate(year = 2015,
-         set = "sim")
+sum(seir_vector_14$adj_inc)
+
+plot_seirsei(seir_vector_14)
 ```
 
-## View 
+
+Repeat for 2015
+```{r}
+seir_vector_15 <- seirsei_ode(Nh = 5000, # number of livestock hosts
+                           vect_mult = 250, # number of vectors per host
+                           obs_bias = 0.10, # proportion observed/detected
+                           targ_year = "2015" # to approximate dates 
+                           )
+
+sum(seir_vector_15$adj_inc)
+
+plot_seirsei(seir_vector_15)
+```
+
+### Spatial Randomization 
+```{r}
+sample_2014 <- spatial_sample(inc_df = seir_vector_14, obs_rast = obs_stack.r[[1]])
+
+sample_2015 <- spatial_sample(inc_df = seir_vector_15, obs_rast = obs_stack.r[[2]])
+```
+
+View 
 ```{r}
 join_sims <- rbind(sample_2014, sample_2015)
 
@@ -111,13 +136,22 @@ head(dd)
 
 ## Copy to Year
 ```{r}
-sample_2014 <- rbind(sample_2014, mutate(dd, year = 2014)) %>%
+seq_2014_dates <- seq(as.Date("2014-01-01"), as.Date("2014-12-31"), by = 1)
+
+sample_2014 <- rbind(sample_2014, mutate(dd, 
+                                         year = 2014,
+                                         date = sample(seq_2014_dates, n(), replace = TRUE))) %>%
   mutate(
     pred_var = rnorm(n = n(), mean = 0, sd = 1),
     obs = ifelse(set == "node", 0, 1)
   )
 
-sample_2015 <- rbind(sample_2015, mutate(dd, year = 2015)) %>%
+
+seq_2015_dates <- seq(as.Date("2015-01-01"), as.Date("2015-12-31"), by = 1)
+
+sample_2015 <- rbind(sample_2015, mutate(dd, 
+                                         year = 2015,
+                                         date = sample(seq_2015_dates, n(), replace = TRUE))) %>%
   mutate(
     pred_var = rnorm(n = n(), mean = 0.5, sd = 1),
     obs = ifelse(set == "node", 0, 1)
@@ -158,12 +192,70 @@ range(sample_2015$NN)
 combined_data = rbind(sample_2014, sample_2015)
 ```
 
+
+## Phylogeny
+```{r}
+Vs.Tree = read.tree(here("assets/mcc.tre"))
+
+ggtree(Vs.Tree.c, mrsd="2016-01-10", as.Date = F, size=0.5, col = "gray30") + 
+  ggnewscale::new_scale_colour()  + 
+  geom_range(range="height_0.95_HPD", color= "bisque3", alpha=.4, size=1.8) +
+  geom_tippoint(shape=21, fill="steelblue", color="black") +
+  theme_tree2(axis.title.x = element_text(size=24, face="bold"),
+          axis.title.y = element_blank(),
+          axis.text.x = element_text(face="bold", size=12, vjust=1, 
+                                     hjust=1, angle=45),
+          axis.text.y = element_blank(),
+          plot.title = element_text(size=28, face="bold")) + 
+  theme(plot.margin = unit(c(2,8,5,8), "mm"))
+
+
+VS_Coal_pref <- phylodyn::BNPR_PS(Vs.Tree, lengthout = 100, prec_alpha = 0.01, prec_beta = 0.01,
+                   beta1_prec = 0.001, fns = NULL, log_fns = FALSE, simplify = TRUE,
+                   derivative = FALSE, forward = TRUE)
+
+phylodyn::plot_BNPR(VS_Coal_pref)
+
+VS_Coal_pref.df <- as.data.frame(
+                        cbind(
+                          Ne = VS_Coal_pref$effpop,
+                          Ne.low = VS_Coal_pref$effpop025,
+                          Ne.high = VS_Coal_pref$effpop975))
+
+VS_Coal_pref.df$date <- as.Date("2016-01-10") - days(round(VS_Coal_pref$x*365.25,0))
+
+VS_Coal_pref.df = arrange(VS_Coal_pref.df, desc(date))
+
+
+ggplot(VS_Coal_pref.df, aes(date, Ne)) +
+  geom_line()
+```
+
+
+
+
+
+
+
+
+
+
+
 ## Exposure
 ```{r}
 host_pop.r <- rast(here("assets/host_pop.tif"))
 
-combined_data$host_pop <- extract(host_pop.r, combined_data[,c("x","y")])[,"host_pop"]
-combined_data$host_pop[is.na(combined_data$host_pop)] <- mean(combined_data$host_pop, na.rm=TRUE)
+tessel_mesh <- vect(mesh_tessellation(mesh.dom))
+
+crs(tessel_mesh) <- crs(domain)
+
+tessel_mesh$host_pop <- extract(host_pop.r, tessel_mesh, fun="sum", na.rm=TRUE)[,"host_pop"]/10^3
+
+host_pop <- as.data.frame(
+  extract(tessel_mesh, combined_data[,c("x","y")])) %>% 
+  distinct(id.y, .keep_all = TRUE) 
+
+combined_data$host_pop <- host_pop$host_pop
 
 range(combined_data$host_pop)
 ```
@@ -228,10 +320,6 @@ Field.est = inla.spde.make.index("Field.est",
                                  spde0$n.spde,
                                  n.group=k)
 
-Field.est.c = inla.spde.make.index("Field.est.c", 
-                                   spde0$n.spde,
-                                   n.group=k)
-
 est.lst = list(c(Field.est,
                  Field.est.c,
                  list(intercept2 = 1)), 
@@ -280,8 +368,8 @@ Formula.1 = Y ~ -1 + intercept1 +
 
 # Run Model
 ```{r}
-#theta1 = Model.pf$internal.summary.hyperpar$mean
-theta1 = c(4.597875, 4.474335, -1.232526, 0.165949, 2.538948, 5.608809, 1.867923)   
+#theta1 = Model.demo$internal.summary.hyperpar$mean
+theta1 = c(2.991771, 6.239724, -2.263282, -4.036796, -1.306113)   
 
 
 Model.demo <- inla(Formula.1, 
@@ -295,24 +383,81 @@ Model.demo <- inla(Formula.1,
       										A = inla.stack.A(joint.stk), 
       										compute = TRUE, 
       										link = 1), 
-      				 #control.mode = list(restart = TRUE, theta = theta1),
+      				 control.mode = list(restart = TRUE, theta = theta1),
       				 control.inla = list(strategy="adaptive", 
       									 int.strategy = "eb"),
-      				 control.compute=list(dic = TRUE, cpo = TRUE, waic = TRUE)) 				  
+      				 control.compute=list(dic = FALSE, cpo = FALSE, waic = FALSE)) 				  
 
 summary(Model.demo) 
-save(list=c("Model.demo"), file=here("assets/test.RData"), version = 2)
+#save(list=c("Model.demo"), file=here("assets/demo.RData"), version = 2)
+```
+
+## Create Grid
+```{r}
+blank.r <- obs_stack.r[[1]]
+blank.r[!is.na(blank.r)] <- 0
+
+grid_pnts <- as.points(blank.r)
+names(grid_pnts) <- "cell_value"
 
 
+grid_coords <- grid_pnts %>%
+  geom() %>%
+  as.data.frame() 
 
+Ap = inla.spde.make.A(mesh.dom, 
+                      loc = cbind(grid_coords[,"x"], 
+                                  grid_coords[,"y"]))
+```
 
+## Fitted Estimates
+```{r}
+indx <- inla.stack.index(joint.stk, "est.0")$data
+combined_data$fitted = Model.demo$summary.fitted.values$mean[indx]
 
-
+ggplot(combined_data, aes(obs, fitted)) +
+  geom_point() +
+  geom_line()
 
 
 ```
 
+## Cluster Distance
+```{r}
+plot_cluster(Model.demo)
+```
 
+## Linear Coefficients  
+```{r}
+plot_fixed_marginals(Model.demo, c("pred_var_14", "pred_var_15"))
+```
+
+## Random Fields  
+```{r}
+mrf_pf <- cbind(Model.demo$summary.random$Field.pf$mean, 
+                Field.pf$Field.pf.group)
+
+mrf_pf_v <- list()
+mrf_pf_v  <- split(mrf_pf[,1], mrf_pf[,2])
+
+grid_pnts$pf_2014 <- drop(Ap %*% mrf_pf_v[[1]]) 
+grid_pnts$pf_2015 <- drop(Ap %*% mrf_pf_v[[2]]) 
+
+pf_14.r <- rasterize(grid_pnts, 
+                    blank.r, 
+                    "pf_2014",
+                    background = NA)
+
+pf_15.r <- rasterize(grid_pnts, 
+                    blank.r, 
+                    "pf_2015",
+                    background = NA)
+
+pf_stack.r <-list(pf_14.r, pf_15.r)
+
+
+plot_rast_panels(pf_stack.r, domain, join_sims, rev(coolwarm(4)), center=TRUE)
+```
 
 
 

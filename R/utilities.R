@@ -10,3 +10,8 @@ source_dir <- function(directory_path) {
     source(file)
   }
 }
+
+
+convert_doy_to_date <- function(year, day_of_year) {
+  as.Date(paste(year, day_of_year, sep="-"), format="%Y-%j")
+}
