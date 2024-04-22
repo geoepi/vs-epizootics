@@ -78,7 +78,7 @@ estimate_biased_incidence <- function(ode_output, obs_bias, parameters) {
   }
   
   # approximate incidence
-  incidence <- params["beta_h"] * ode_output$Sh * (ode_output$Ih/params["Nh"])
+  incidence <- parameters["beta_h"] * ode_output$Sh * (ode_output$Ih/parameters["Nh"])
   
   ode_output$adj_inc <- incidence * obs_bias
   

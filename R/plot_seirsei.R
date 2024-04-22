@@ -10,6 +10,7 @@ plot_seirsei <- function(output){
   
   min_date <- min(output$date)
   max_date <- max(output$date)
+  year_label <- year(output$date)
 
     gg <- ggplot() +
       geom_bar(data = adj_inc,
@@ -23,7 +24,7 @@ plot_seirsei <- function(output){
       scale_y_continuous(sec.axis = sec_axis(~ . / scaling_factor, name = "Simulated Incidence")) +
       scale_colour_manual(values = c("#B15928", "#1F78B4", "#E31A1C", "#33A02C")) +
       scale_fill_manual(values = c("#FFFF99",  "#A6CEE3","#FB9A99", "#B2DF8A")) + 
-      xlab(" ") + 
+      xlab(year_label) + 
       ylab("Population") +
       theme_bw() +
       theme(plot.margin = unit(c(1,0.5,1,0.5),"cm"),

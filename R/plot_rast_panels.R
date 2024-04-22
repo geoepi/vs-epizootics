@@ -1,4 +1,4 @@
-plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_name, center=FALSE) {
+plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_name, point_col = "gray40", center=FALSE) {
   
   df1 <- as.data.frame(raster_stack[[1]], xy = TRUE, na.rm = TRUE, layer = 1)
   names(df1)[3] <- "RF"
@@ -15,13 +15,13 @@ plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_
   
   domain_fort <- fortify(as(domain_fort, "Spatial"))
   
-  min_RF <- floor(min(joined_df$RF, na.rm = TRUE))
+  min_RF <- min(min(joined_df$RF, na.rm = TRUE))
   max_RF <- ceiling(max(joined_df$RF, na.rm = TRUE))
   
   if(center == FALSE){
     col_values = c(0, 0.05, 0.25, 1)
   } else{
-    col_values = c(0, 0.25, 0.5, 1)
+    col_values = c(0, 0.25, 0.5, 0.75, 1)
   }
   
   # Create the ggplot
@@ -30,8 +30,8 @@ plot_rast_panels <- function(raster_stack, domain_fort, plot_sim, color_palette_
     scale_fill_gradientn(colours = color_palette, limits = c(min_RF, max_RF), values = col_values) +
     geom_polygon(data = domain_fort, aes(long,lat, group=group),
                  fill = "transparent", col="gray50", linewidth = 0.1) +
-    geom_point(data = plot_sim,
-               aes(x, y), col="gray40", size=2.25, shape=1, fill=NA, alpha=0.5) +
+    #geom_point(data = plot_sim,
+     #          aes(x, y), col=point_col, size=2.25, shape=1, fill=NA, alpha=0.5) +
     xlab("Easting") +
     ylab("Northing") +
     facet_wrap(~ year, ncol = 2) +

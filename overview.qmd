@@ -19,7 +19,7 @@ editor_options:
 ---
 
 ## Load Libraries
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(tidyterra)
 library(raster)
@@ -30,12 +30,14 @@ library(rgeos)
 library(pals)
 library(here)
 
+select <- dplyr::select
+
 library(INLA)
 #install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE)
 ```
 
 ## Custom Functions
-```{r}
+```{r message=FALSE, warning=FALSE}
 set.seed(1976)
 
 source(here("./R/utilities.R"))
@@ -44,7 +46,7 @@ source_dir("./R")
 
 
 ## Get Boundaries
-```{r}
+```{r message=FALSE, warning=FALSE}
 domain <- vect(here("assets/domain"))
 
 obs_stack.r <- rast(
@@ -58,7 +60,7 @@ obs_stack.r <- rast(
 ## Simulate Outbreak  
   
 ### SEIR-Vector Dynamics  
-```{r}
+```{r message=FALSE, warning=FALSE}
 seir_vector_14 <- seirsei_ode(Nh = 4100, # number of livestock hosts
                            vect_mult = 250, # number of vectors per host
                            obs_bias = 0.10, # proportion observed/detected
@@ -72,7 +74,7 @@ plot_seirsei(seir_vector_14)
 
 
 Repeat for 2015
-```{r}
+```{r message=FALSE, warning=FALSE}
 seir_vector_15 <- seirsei_ode(Nh = 5000, # number of livestock hosts
                            vect_mult = 250, # number of vectors per host
                            obs_bias = 0.10, # proportion observed/detected
@@ -85,21 +87,21 @@ plot_seirsei(seir_vector_15)
 ```
 
 ### Spatial Randomization 
-```{r}
+```{r message=FALSE, warning=FALSE}
 sample_2014 <- spatial_sample(inc_df = seir_vector_14, obs_rast = obs_stack.r[[1]])
 
 sample_2015 <- spatial_sample(inc_df = seir_vector_15, obs_rast = obs_stack.r[[2]])
 ```
 
 View 
-```{r}
+```{r message=FALSE, warning=FALSE}
 join_sims <- rbind(sample_2014, sample_2015)
 
 plot_rast_panels(obs_stack.r, domain, join_sims, brewer.ylorbr(4))
 ```
 
 ## Spatial Triangulation  
-```{r}
+```{r message=FALSE, warning=FALSE}
 hull <- st_convex_hull(
   st_buffer(
     st_union(
@@ -117,13 +119,11 @@ mesh.dom <- inla.mesh.2d(boundary = dom_bnds,
                         min.angle = 30) 
 
 mesh.dom$n
-plot(mesh.dom, 
-     draw.vertices = TRUE,
-     vertex.color = c("gray60"), lwd=1.5)
+plot_mesh(mesh.dom)
 ```
 
 ## Node Coordinates
-```{r}
+```{r message=FALSE, warning=FALSE}
 dd = as.data.frame(cbind(mesh.dom$loc[,1], 
                          mesh.dom$loc[,2]))
 
@@ -135,7 +135,7 @@ head(dd)
 ```
 
 ## Copy to Year
-```{r}
+```{r message=FALSE, warning=FALSE}
 seq_2014_dates <- seq(as.Date("2014-01-01"), as.Date("2014-12-31"), by = 1)
 
 sample_2014 <- rbind(sample_2014, mutate(dd, 
@@ -188,61 +188,31 @@ range(sample_2015$NN)
 
 
 ## Combine Data
-```{r}
+```{r message=FALSE, warning=FALSE}
 combined_data = rbind(sample_2014, sample_2015)
 ```
 
 
-## Phylogeny
-```{r}
-Vs.Tree = read.tree(here("assets/mcc.tre"))
+## Phylodynamics
+```{r message=FALSE, warning=FALSE}
+vsv_tree = read.tree(here("assets/mcc.tre"))
 
-ggtree(Vs.Tree.c, mrsd="2016-01-10", as.Date = F, size=0.5, col = "gray30") + 
-  ggnewscale::new_scale_colour()  + 
-  geom_range(range="height_0.95_HPD", color= "bisque3", alpha=.4, size=1.8) +
-  geom_tippoint(shape=21, fill="steelblue", color="black") +
-  theme_tree2(axis.title.x = element_text(size=24, face="bold"),
-          axis.title.y = element_blank(),
-          axis.text.x = element_text(face="bold", size=12, vjust=1, 
-                                     hjust=1, angle=45),
-          axis.text.y = element_blank(),
-          plot.title = element_text(size=28, face="bold")) + 
-  theme(plot.margin = unit(c(2,8,5,8), "mm"))
+phylodynamics <- phylodynamic_process(vsv_tree)
 
+head(phylodynamics$dyn)
 
-VS_Coal_pref <- phylodyn::BNPR_PS(Vs.Tree, lengthout = 100, prec_alpha = 0.01, prec_beta = 0.01,
-                   beta1_prec = 0.001, fns = NULL, log_fns = FALSE, simplify = TRUE,
-                   derivative = FALSE, forward = TRUE)
+combined_data <- append_nearest_date(combined_data, phylodynamics$dyn, "Ne")
+combined_data <- combined_data %>%
+  mutate(Ne_NA = if_else(set == "sim", Ne, NA))
 
-phylodyn::plot_BNPR(VS_Coal_pref)
+plot(phylodynamics$tree)
 
-VS_Coal_pref.df <- as.data.frame(
-                        cbind(
-                          Ne = VS_Coal_pref$effpop,
-                          Ne.low = VS_Coal_pref$effpop025,
-                          Ne.high = VS_Coal_pref$effpop975))
-
-VS_Coal_pref.df$date <- as.Date("2016-01-10") - days(round(VS_Coal_pref$x*365.25,0))
-
-VS_Coal_pref.df = arrange(VS_Coal_pref.df, desc(date))
-
-
-ggplot(VS_Coal_pref.df, aes(date, Ne)) +
-  geom_line()
+plot(phylodynamics$Ne)
 ```
 
 
-
-
-
-
-
-
-
-
-
 ## Exposure
-```{r}
+```{r message=FALSE, warning=FALSE}
 host_pop.r <- rast(here("assets/host_pop.tif"))
 
 tessel_mesh <- vect(mesh_tessellation(mesh.dom))
@@ -260,14 +230,19 @@ combined_data$host_pop <- host_pop$host_pop
 range(combined_data$host_pop)
 ```
 
+```{r message=FALSE, warning=FALSE}
+plot_exposure_seq(mesh = mesh.dom, dd_nodes = dd, rast_data = host_pop.r, 
+                  rast_scale = 10^3, xmin = -11500, xmax = -10500, ymin = 3500, ymax = 4500)
+```
 
 ## Time Step
-```{r}
-combined_data$time_step <- as.integer(as.factor(combined_data$year))
+```{r message=FALSE, warning=FALSE}
+combined_data$year_step <- as.integer(as.factor(combined_data$year))
+combined_data$day_step <- as.integer(as.factor(combined_data$date))
 ```
 
 ## Split Pred Variable
-```{r}
+```{r message=FALSE, warning=FALSE}
 combined_data <- combined_data %>%
   mutate(pred_var_14 = if_else(year == 2014, pred_var, NA),
          pred_var_15 = if_else(year == 2015, pred_var, NA))
@@ -278,8 +253,8 @@ combined_data <- combined_data %>%
 ## Projection  
 
 ### Random Field
-```{r}
-k = length(unique(combined_data$time_step))
+```{r message=FALSE, warning=FALSE}
+k = length(unique(combined_data$year_step))
 
 locs = cbind(combined_data$x, combined_data$y)
 
@@ -299,8 +274,7 @@ Field.pf = inla.spde.make.index("Field.pf",
 
 pf.lst = list(c(Field.pf, 
                 list(intercept1 = 1)), 
-                list(time_step1 = combined_data[,"time_step"],
-                     time_step2 = combined_data[,"time_step"])) 
+                list(year_step1 = combined_data[,"year_step"])) 
 
 pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
                                 A = list(A.pf, 1), 
@@ -310,7 +284,7 @@ pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
 ```
 
 ### Estimate
-```{r}
+```{r message=FALSE, warning=FALSE}
 A.est = inla.spde.make.A(mesh.dom, 
                          alpha = 2,
                          loc=locs,
@@ -321,13 +295,13 @@ Field.est = inla.spde.make.index("Field.est",
                                  n.group=k)
 
 est.lst = list(c(Field.est,
-                 Field.est.c,
                  list(intercept2 = 1)), 
                  list(pred_var_14 = combined_data[,"pred_var_14"],
                       pred_var_15 = combined_data[,"pred_var_15"],
                       NN = combined_data[,"NN"],
-                      time_step1 = combined_data[,"time_step"],
-                      time_step2 = combined_data[,"time_step"]))
+                      Ne = combined_data[,"Ne"],
+                      year_step1 = combined_data[,"year_step"],
+                      day_step = combined_data[,"day_step"]))
 
 est.stk = inla.stack(data = list(Y = cbind(NA, combined_data$obs),
                                  e = combined_data$host_pop),
@@ -341,13 +315,13 @@ joint.stk = inla.stack(pf.stk, est.stk)
 ```
 
 ## Formula  
-```{r}
+```{r message=FALSE, warning=FALSE}
 pcprior1 = list(prec = list(prior="pc.prec", param = c(1, 0.01))) 
 hc1 = list(theta = list(prior = 'normal', param = c(0, 10)))
 ctr.g = list(model = 'iid', hyper = hc1)
 
 Formula.1 = Y ~ -1 + intercept1 + 
-                   intercept2 +
+                     intercept2 +
           				f(Field.pf,
           				  model=spde0,
           				  group = Field.pf.group, 
@@ -360,16 +334,21 @@ Formula.1 = Y ~ -1 + intercept1 +
          				  f(NN,   
                     model="rw1", 
                     constr=TRUE,
-         				    replicate = time_step1,
+         				    replicate = year_step1,
+                    scale.model=TRUE,
+         				    hyper=pcprior1) +
+                  f(day_step, Ne,   
+                    model="rw1", 
+                    constr=TRUE,
                     scale.model=TRUE,
          				    hyper=pcprior1) +
                   pred_var_14 + pred_var_15 
 ```
 
 # Run Model
-```{r}
+```{r eval=FALSE, message=FALSE, warning=FALSE}
 #theta1 = Model.demo$internal.summary.hyperpar$mean
-theta1 = c(2.991771, 6.239724, -2.263282, -4.036796, -1.306113)   
+theta1 = c(3.091600, 6.136307, -2.297550, -1.228109, -2.166505, -1.035271)   
 
 
 Model.demo <- inla(Formula.1, 
@@ -386,14 +365,18 @@ Model.demo <- inla(Formula.1,
       				 control.mode = list(restart = TRUE, theta = theta1),
       				 control.inla = list(strategy="adaptive", 
       									 int.strategy = "eb"),
-      				 control.compute=list(dic = FALSE, cpo = FALSE, waic = FALSE)) 				  
+      				 control.compute=list(dic = FALSE, cpo = FALSE, waic = FALSE)) 
 
-summary(Model.demo) 
-#save(list=c("Model.demo"), file=here("assets/demo.RData"), version = 2)
+save(list=c("Model.demo"), file=here("assets/demo.RData"), version = 2)
+```
+
+Load previously run model  
+```{r message=FALSE, warning=FALSE}
+load(here("assets/demo.RData"))
 ```
 
 ## Create Grid
-```{r}
+```{r message=FALSE, warning=FALSE}
 blank.r <- obs_stack.r[[1]]
 blank.r[!is.na(blank.r)] <- 0
 
@@ -411,7 +394,7 @@ Ap = inla.spde.make.A(mesh.dom,
 ```
 
 ## Fitted Estimates
-```{r}
+```{r message=FALSE, warning=FALSE}
 indx <- inla.stack.index(joint.stk, "est.0")$data
 combined_data$fitted = Model.demo$summary.fitted.values$mean[indx]
 
@@ -423,17 +406,22 @@ ggplot(combined_data, aes(obs, fitted)) +
 ```
 
 ## Cluster Distance
-```{r}
+```{r message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
 plot_cluster(Model.demo)
 ```
 
 ## Linear Coefficients  
-```{r}
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=5}
 plot_fixed_marginals(Model.demo, c("pred_var_14", "pred_var_15"))
 ```
 
+## Phylodynamic
+```{r message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
+plot_phylodynamic(Model.demo, parameter = "day_step")
+```
+
 ## Random Fields  
-```{r}
+```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=5}
 mrf_pf <- cbind(Model.demo$summary.random$Field.pf$mean, 
                 Field.pf$Field.pf.group)
 
@@ -456,7 +444,7 @@ pf_15.r <- rasterize(grid_pnts,
 pf_stack.r <-list(pf_14.r, pf_15.r)
 
 
-plot_rast_panels(pf_stack.r, domain, join_sims, rev(coolwarm(4)), center=TRUE)
+plot_rast_panels(pf_stack.r, domain, join_sims, rev(cubehelix(50)), point_col = "gray60", center=TRUE)
 ```
 
 
