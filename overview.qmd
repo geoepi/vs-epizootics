@@ -122,7 +122,7 @@ mesh.dom$n
 plot_mesh(mesh.dom)
 ```
 
-## Node Coordinates
+### Node Coordinates
 ```{r message=FALSE, warning=FALSE}
 dd = as.data.frame(cbind(mesh.dom$loc[,1], 
                          mesh.dom$loc[,2]))
@@ -134,7 +134,7 @@ dd$set <- "node"
 head(dd)
 ```
 
-## Copy to Year
+### Copy to Year
 ```{r message=FALSE, warning=FALSE}
 seq_2014_dates <- seq(as.Date("2014-01-01"), as.Date("2014-12-31"), by = 1)
 
@@ -187,7 +187,7 @@ range(sample_2015$NN)
 ```
 
 
-## Combine Data
+### Combine Data
 ```{r message=FALSE, warning=FALSE}
 combined_data = rbind(sample_2014, sample_2015)
 ```
@@ -202,8 +202,6 @@ phylodynamics <- phylodynamic_process(vsv_tree)
 head(phylodynamics$dyn)
 
 combined_data <- append_nearest_date(combined_data, phylodynamics$dyn, "Ne")
-combined_data <- combined_data %>%
-  mutate(Ne_NA = if_else(set == "sim", Ne, NA))
 
 plot(phylodynamics$tree)
 
@@ -235,13 +233,13 @@ plot_exposure_seq(mesh = mesh.dom, dd_nodes = dd, rast_data = host_pop.r,
                   rast_scale = 10^3, xmin = -11500, xmax = -10500, ymin = 3500, ymax = 4500)
 ```
 
-## Time Step
+## Time Index
 ```{r message=FALSE, warning=FALSE}
 combined_data$year_step <- as.integer(as.factor(combined_data$year))
 combined_data$day_step <- as.integer(as.factor(combined_data$date))
 ```
 
-## Split Pred Variable
+## Split Predictor Variable
 ```{r message=FALSE, warning=FALSE}
 combined_data <- combined_data %>%
   mutate(pred_var_14 = if_else(year == 2014, pred_var, NA),
@@ -271,7 +269,11 @@ spde0 = inla.spde2.pcmatern(mesh.dom, alpha = 2,
 Field.pf = inla.spde.make.index("Field.pf", 
                                spde0$n.spde,
                                n.group=k)
+```
 
+
+### Organize Data
+```{r}
 pf.lst = list(c(Field.pf, 
                 list(intercept1 = 1)), 
                 list(year_step1 = combined_data[,"year_step"])) 
@@ -314,7 +316,28 @@ est.stk = inla.stack(data = list(Y = cbind(NA, combined_data$obs),
 joint.stk = inla.stack(pf.stk, est.stk)
 ```
 
-## Formula  
+## Model Formula  
+
+$$\begin{align}
+   \text{log}(\Lambda_{st}) &= W_{st} \nonumber \\ \nonumber
+    \quad \quad \Lambda_{st} &= \text{exp}\{\beta_{\Lambda} + \text{W}_{st}\}\\ \nonumber
+    \text{W}_{st} &\overset{\textit{iid}}{\sim} \textit{N}(0, \text{Q}(\textit{r},\sigma)) \\ \nonumber
+    \textit{r} &\sim \textit{Pr}(250, 0.01) \\ \nonumber
+    \sigma &\sim \textit{Pr}(1, 0.01) \\ \nonumber
+\end{align}$$ 
+
+
+$$\begin{align}
+   \text{Y}_{st}|\lambda_{st}  &\sim \text{Poisson}(\mu_{st})  \nonumber \\ \nonumber
+   \mu_{st} &= \textit{E}_{\textit{st}}\lambda_{st} \\ \nonumber
+   log(\mu_{\textit{st}}) &= log(\textit{E}_{\textit{st}}) + log(\lambda_{\textit{st}}) \\ \nonumber
+   log(\lambda_{\textit{st}}) &=  \beta_0 + \sum_{b=1}^{B} \beta_bX_{bst} + \gamma_{clust} + \gamma_{river} + \gamma_{ne} + \alpha \text{W}_{st}  \\  \nonumber
+   \beta_b &= (\beta_{eddi}, \beta_{wet}, \beta_{temp}, \beta_{seas}, \beta_{carb}, \beta_{shrb}, \beta_{elev}, \beta_{ndvi}) \\ \nonumber
+   \beta_b &\sim \textit{N}(1, 0.001) \\ \nonumber
+   \gamma_{clust}, \gamma_{river} &\sim \textit{Pr}(1, 0.01) \\ \nonumber
+   \gamma_{ne} &\sim \textit{Pr}(3, 0.01) \\ \nonumber
+\end{align}$$
+
 ```{r message=FALSE, warning=FALSE}
 pcprior1 = list(prec = list(prior="pc.prec", param = c(1, 0.01))) 
 hc1 = list(theta = list(prior = 'normal', param = c(0, 10)))
@@ -347,7 +370,6 @@ Formula.1 = Y ~ -1 + intercept1 +
 
 # Run Model
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
-#theta1 = Model.demo$internal.summary.hyperpar$mean
 theta1 = c(3.091600, 6.136307, -2.297550, -1.228109, -2.166505, -1.035271)   
 
 
@@ -393,18 +415,6 @@ Ap = inla.spde.make.A(mesh.dom,
                                   grid_coords[,"y"]))
 ```
 
-## Fitted Estimates
-```{r message=FALSE, warning=FALSE}
-indx <- inla.stack.index(joint.stk, "est.0")$data
-combined_data$fitted = Model.demo$summary.fitted.values$mean[indx]
-
-ggplot(combined_data, aes(obs, fitted)) +
-  geom_point() +
-  geom_line()
-
-
-```
-
 ## Cluster Distance
 ```{r message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
 plot_cluster(Model.demo)
@@ -415,12 +425,12 @@ plot_cluster(Model.demo)
 plot_fixed_marginals(Model.demo, c("pred_var_14", "pred_var_15"))
 ```
 
-## Phylodynamic
+## Phylodynamic Effect
 ```{r message=FALSE, warning=FALSE, fig.height=5, fig.width=6}
 plot_phylodynamic(Model.demo, parameter = "day_step")
 ```
 
-## Random Fields  
+## Spatial Random Fields  
 ```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=5}
 mrf_pf <- cbind(Model.demo$summary.random$Field.pf$mean, 
                 Field.pf$Field.pf.group)
@@ -444,7 +454,7 @@ pf_15.r <- rasterize(grid_pnts,
 pf_stack.r <-list(pf_14.r, pf_15.r)
 
 
-plot_rast_panels(pf_stack.r, domain, join_sims, rev(cubehelix(50)), point_col = "gray60", center=TRUE)
+plot_rast_panels(pf_stack.r, domain, join_sims, rev(cubehelix(50)), center=TRUE)
 ```
 
 
