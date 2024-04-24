@@ -1,5 +1,6 @@
 ---
 title: "Overview"
+bibliography: references.bib
 format:
   html: 
     df-print: kable
@@ -17,6 +18,11 @@ editor: source
 editor_options: 
   chunk_output_type: console
 ---
+
+## Introduction
+
+This site provides @Illian_2012 an overview.
+
 
 ## Load Libraries
 ```{r message=FALSE, warning=FALSE}
@@ -259,7 +265,7 @@ locs = cbind(combined_data$x, combined_data$y)
 A.pf = inla.spde.make.A(mesh.dom, 
                           alpha = 2,
                           loc=locs,
-                          group = combined_data$time_step)
+                          group = combined_data$year_step)
 
 spde0 = inla.spde2.pcmatern(mesh.dom, alpha = 2,
                             prior.range=c(250, 0.01),  
@@ -290,7 +296,7 @@ pf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)),
 A.est = inla.spde.make.A(mesh.dom, 
                          alpha = 2,
                          loc=locs,
-                         group = combined_data$time_step)
+                         group = combined_data$year_step)
 
 Field.est = inla.spde.make.index("Field.est",
                                  spde0$n.spde,

@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  title: "VSV Genomes & Geography"
+  navbar:
+    left:
+      - href: overview.qmd
+        text: Overview 
+      - href: references.qmd
+        text: References 
+    tools:
+      - icon: github
+        href: https://github.com/geoepi/
+  page-footer:
+    right: "Built with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme: lux
+    toc: true
+    
+editor: source
+

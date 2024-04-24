@@ -20,6 +20,8 @@ plot_exposure_seq <- function(mesh = mesh.dom, dd_nodes = dd, rast_data = host_p
   
   mesh_df <- extract_mesh_network(mesh)
   
+  edges <- mesh_df$edges
+  
   lines_list <- vector("list", length = nrow(edges))
   
   for (i in 1:nrow(edges)) {
