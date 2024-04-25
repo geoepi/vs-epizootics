@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
   
-website:
+website: 
   title: "VSV Genomes & Geography"
   navbar:
     left:

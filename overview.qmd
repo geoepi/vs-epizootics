@@ -454,7 +454,7 @@ Formula.1 = Y ~ -1 + intercept1 + # intercept tier 1
                   pred_var_14 + pred_var_15 # linear effects 
 ```
 
-# Run Model  
+## Run Model  
 This light, demonstrative model took approximately 1hr to run.  The saved model is loaded below to examine outputs and results.
 ```{r eval=FALSE, message=FALSE, warning=FALSE}
 theta1 = c(3.091600, 6.136307, -2.297550, -1.228109, -2.166505, -1.035271) # mean hyperparameters from initial run (speeds up runs)  
@@ -483,7 +483,9 @@ Load previously run model
 load(here("assets/demo.RData"))
 ```
 
-## Create Grid  
+## Results
+
+### Create Grid  
 Creatin a point grid and raster to visulaize results.
 ```{r message=FALSE, warning=FALSE}
 blank.r <- obs_stack.r[[1]]
@@ -502,7 +504,7 @@ Ap = inla.spde.make.A(mesh.dom,
                                   grid_coords[,"y"]))
 ```
 
-## Cluster Distance
+### Cluster Distance
 ```{r message=FALSE, warning=FALSE, warning=FALSE, fig.height=6, fig.width=8}
 #| label: fig-clust
 #| fig-cap: "Spatial clustering of simulated disease detections"
@@ -510,7 +512,7 @@ Ap = inla.spde.make.A(mesh.dom,
 plot_cluster(Model.demo)
 ```
 
-## Linear Coefficients  
+### Linear Coefficients  
 ```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=6}
 #| label: fig-fixed
 #| fig-cap: "Fictitious linear effects constructed with different mean averages."
@@ -518,7 +520,7 @@ plot_cluster(Model.demo)
 plot_fixed_marginals(Model.demo, c("pred_var_14", "pred_var_15"))
 ```
 
-## Phylodynamic Effect
+### Phylodynamic Effect
 ```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=8}
 #| label: fig-phylo_out
 #| fig-cap: "Effective population size effect."
@@ -526,7 +528,7 @@ plot_fixed_marginals(Model.demo, c("pred_var_14", "pred_var_15"))
 plot_phylodynamic(Model.demo, parameter = "day_step")
 ```
 
-## Spatial Random Fields  
+### Spatial Random Fields  
 Extract estimates from model and rasterize them for visualization. 
 ```{r message=FALSE, warning=FALSE, fig.height=6, fig.width=5}
 mrf_pf <- cbind(Model.demo$summary.random$Field.pf$mean, 
