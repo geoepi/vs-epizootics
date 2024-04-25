@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "overview.html",
+    "href": "overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "Supporting Information (in review)\n\n\n\nThis site provides a demonstrative workflow and supporting information for the publication:\nInterrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics\nAuthors:\nHumphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and Rodriguez\nAll code and data are available for dowload:\nGitHub site: https://github.com/geoepi/vs-epizootics"
+  },
+  {
+    "objectID": "overview.html#load-libraries",
+    "href": "overview.html#load-libraries",
+    "title": "Overview",
+    "section": "Load Libraries",
+    "text": "Load Libraries\nLoad needed R-packages to execute code. Note that the r-INLA package (Rue, Martino, and Chopin (2009), Lindgren and Rue (2015)) is not available on CRAN and must be installed from the INLA team website.\n\n\nHide code\nlibrary(tidyverse)\nlibrary(tidyterra)\nlibrary(raster)\nlibrary(ggtree)\nlibrary(terra)\nlibrary(raptr)\nlibrary(rgeos)\nlibrary(pals)\nlibrary(here)\n\nselect <- dplyr::select\n\nlibrary(INLA)\n#install.packages(\"INLA\",repos=c(getOption(\"repos\"),INLA=\"https://inla.r-inla-download.org/R/stable\"), dep=TRUE)"
+  },
+  {
+    "objectID": "overview.html#custom-functions",
+    "href": "overview.html#custom-functions",
+    "title": "Overview",
+    "section": "Custom Functions",
+    "text": "Custom Functions\nCustom functions to perform data process and create figure plots. These are available from the linked repository at the top of the script.\n\n\nHide code\nset.seed(1976)\n\nsource(here(\"./R/utilities.R\"))\nsource_dir(\"./R\")"
+  },
+  {
+    "objectID": "overview.html#get-boundaries",
+    "href": "overview.html#get-boundaries",
+    "title": "Overview",
+    "section": "Get Boundaries",
+    "text": "Get Boundaries\nThe assets folder includes raster and other data files to perform the analysis\n\n\nHide code\ndomain <- vect(here(\"assets/domain\")) # geographic boundary polygons\n\nobs_stack.r <- rast( # Rasters depicting Spatial Random Fields estimated from true data\n  list(\n    rast(here(\"assets/rf_2014.tif\")),\n    rast(here(\"assets/rf_2015.tif\"))\n       )\n)"
+  },
+  {
+    "objectID": "overview.html#simulate-outbreak",
+    "href": "overview.html#simulate-outbreak",
+    "title": "Overview",
+    "section": "Simulate Outbreak",
+    "text": "Simulate Outbreak\nVirus and disease detection data presented in the manuscript includes the geographic coordinates recording locations for private residences and businesses. This data is confidential and cannot be shared, therefore, this demonstration first simulates outbreak count data from an SEIR-vector model and then randomly assigns geographic locations based on the Spatial Random Fields estimated from the true data. This information is included in the raster files loaded in the previous code chunk.\n\nSEIR-Vector Dynamics\nSimulate Vesicular stomatitis disease detections for 2014.\n\n\nHide code\nseir_vector_14 <- seirsei_ode(Nh = 4100, # number of livestock hosts\n                           vect_mult = 250, # number of vectors per host\n                           obs_bias = 0.10, # proportion observed/detected\n                           targ_year = \"2014\" # to approximate dates \n                           )\n\nsum(seir_vector_14$adj_inc)\n\n\n[1] 606\n\n\nHide code\nplot_seirsei(seir_vector_14)\n\n\n\n\n\nFigure 1: Simulated VSV outbreak for 2014 with the number of susceptible (Sh), exposed (Eh), infectious (Ih), and removed (Rh) individuals.\n\n\n\n\nRepeat for the 2015 outbreak year.\n\n\nHide code\n#|\nseir_vector_15 <- seirsei_ode(Nh = 5000, # number of livestock hosts\n                           vect_mult = 250, # number of vectors per host\n                           obs_bias = 0.10, # proportion observed/detected\n                           targ_year = \"2015\" # to approximate dates \n                           )\n\nsum(seir_vector_15$adj_inc)\n\n\n[1] 736\n\n\nHide code\nplot_seirsei(seir_vector_15)\n\n\n\n\n\nFigure 2: Simulated VSV outbreak for 2015 with the number of susceptible (Sh), exposed (Eh), infectious (Ih), and removed (Rh) individuals.\n\n\n\n\n\n\nSpatial Randomization\nNOTE: The data produced through simulation appears similar to that presented in the publication, but is different in several regards. Because of these differences, results presented here will not exactly match those presented in the paper.\n\n\nHide code\nsample_2014 <- spatial_sample(inc_df = seir_vector_14, obs_rast = obs_stack.r[[1]])\n\nsample_2015 <- spatial_sample(inc_df = seir_vector_15, obs_rast = obs_stack.r[[2]])\n\n\nView the simulated VS cases in relation to\n\n\nHide code\njoin_sims <- rbind(sample_2014, sample_2015)\n\nplot_rast_panels(obs_stack.r, domain, join_sims, brewer.ylorbr(4))\n\n\n\n\n\nFigure 3: Simulated disease detections overlying Spatial Random Fields estimated from true data as presented in the publication. Note that although clustering is evident, it is less pronounced as that in true data."
+  },
+  {
+    "objectID": "overview.html#spatial-triangulation",
+    "href": "overview.html#spatial-triangulation",
+    "title": "Overview",
+    "section": "Spatial Triangulation",
+    "text": "Spatial Triangulation\nConstruct a triangulated mesh to apply Stochastic Partial Differential Equations (see, Krainski et al. (2018)). This mesh is at more coarse resolution than that used for the actual analysis in effort to reduce computational demand.\n\n\nHide code\n#|\nhull <- st_convex_hull(\n  st_buffer(\n    st_union(\n      st_as_sf(domain)),\n    100))\n\ndom_bnds <- inla.sp2segment(as(hull, \"Spatial\"))\n\nset.seed(1976)\nmesh.dom <- inla.mesh.2d(boundary = dom_bnds, \n                        loc = join_sims[,c(\"x\",\"y\")],\n                        cutoff = 20, \n                        max.edge = c(60, 300),\n                        offset = c(100,250),\n                        min.angle = 30) \n\n\nplot_mesh(mesh.dom)\n\n\n\n\n\nFigure 4: Trianglulated mesh with vvertices aligned to simulated disease locations. Note that vertex intersections represent nodes.\n\n\n\n\n\nNode Coordinates\nExtracting the geographic coordinates for node locations. These are used for model integration and represent background characteristics with respect to environmental conditions.\n\n\nHide code\ndd = as.data.frame(cbind(mesh.dom$loc[,1], \n                         mesh.dom$loc[,2]))\n\nnames(dd) = c(\"x\", \"y\")\n\ndd$set <- \"node\"\n\n\n\n\nHide code\nhead(dd)\n\n\n\n\n\nTable 1: Quick look at node data attributes\n\n\nx\ny\nset\n\n\n\n\n-12062.23\n2800.044\nnode\n\n\n-12082.84\n2801.702\nnode\n\n\n-12102.67\n2807.565\nnode\n\n\n-12179.32\n2844.257\nnode\n\n\n-12219.55\n2868.210\nnode\n\n\n-12236.23\n2880.891\nnode\n\n\n\n\n\n\n\n\n\nCopy to Year\nCreate a separate copy of the nodes for each year of interest, join the nodes with simulated outbreaks, and assign a random calendar date to each. The nodes are joined to the observation data where a fictitious predictor variable is created (pred_var) and a column obs is added to code a 1 for disease observations and a 0 for mesh nodes. Note that the pred_var are simulated using different mean values so that years show a different average. This process is performed for each year separately.\n\n\nHide code\nseq_2014_dates <- seq(as.Date(\"2014-01-01\"), as.Date(\"2014-12-31\"), by = 1)\n\nsample_2014 <- rbind(sample_2014, mutate(dd, \n                                         year = 2014,\n                                         date = sample(seq_2014_dates, n(), replace = TRUE))) %>%\n  mutate(\n    pred_var = rnorm(n = n(), mean = 0, sd = 1),\n    obs = ifelse(set == \"node\", 0, 1)\n  )\n\n\nseq_2015_dates <- seq(as.Date(\"2015-01-01\"), as.Date(\"2015-12-31\"), by = 1)\n\nsample_2015 <- rbind(sample_2015, mutate(dd, \n                                         year = 2015,\n                                         date = sample(seq_2015_dates, n(), replace = TRUE))) %>%\n  mutate(\n    pred_var = rnorm(n = n(), mean = 0.5, sd = 1),\n    obs = ifelse(set == \"node\", 0, 1)\n  )\n\n\n\n\nHide code\nhead(sample_2015)\n\n\n\n\n\nTable 2: Quick look at resulting data attributes\n\n\nx\ny\nyear\nset\ndate\npred_var\nobs\n\n\n\n\n-11830.07\n4146.953\n2015\nsim\n2015-03-27\n-0.5322010\n1\n\n\n-11977.28\n4739.053\n2015\nsim\n2015-03-28\n0.6199045\n1\n\n\n-11830.07\n5292.953\n2015\nsim\n2015-03-29\n3.8629048\n1\n\n\n-11745.95\n4605.353\n2015\nsim\n2015-03-30\n2.0648198\n1\n\n\n-11991.30\n4643.553\n2015\nsim\n2015-03-31\n0.6998745\n1\n\n\n-11472.56\n5464.853\n2015\nsim\n2015-04-01\n2.0260718\n1"
+  },
+  {
+    "objectID": "overview.html#cluster-distance",
+    "href": "overview.html#cluster-distance",
+    "title": "Overview",
+    "section": "Cluster Distance",
+    "text": "Cluster Distance\nA constructed covariate, or cluster variable is made to account for spatial correlation below the resolution of the mesh. This is done by calculating the distance to nearest locations with a simulated disease detection. (see, Illian, Sørbye, and Rue (2012) for discussion of this approach)\n\n\nHide code\n# 2014\nsplit_factor <- as.factor(sample_2014$set)\n\nNN <- as.data.frame(\n  spatstat.geom::nndist(sample_2014[,c(\"x\",\"y\")], by = split_factor, k = 1) \n)[\"sim\"]\n\nsample_2014$NN <- round(NN$sim, 0)\n\n\n\n# 2015\nsplit_factor <- as.factor(sample_2015$set)\n\nNN <- as.data.frame(\n  spatstat.geom::nndist(sample_2015[,c(\"x\",\"y\")], by = split_factor, k = 1)\n)[\"sim\"]\n\nsample_2015$NN <- round(NN$sim, 0)\n\n\n\nCombine Data\nJoining data from both 2014 and 2015 to a common data set.\n\n\nHide code\ncombined_data = rbind(sample_2014, sample_2015)"
+  },
+  {
+    "objectID": "overview.html#phylodynamics",
+    "href": "overview.html#phylodynamics",
+    "title": "Overview",
+    "section": "Phylodynamics",
+    "text": "Phylodynamics\nA maximum clade credibility tree is loaded. This tree includes actual disease genomic data but does not have location information. After reading the phylogeny, phylodynamic analysis is performed using the phylodyn package (Karcher et al. (2017)). The resulting effective population size estimate (Ne) is matched to the data frame by date.\n\n\nHide code\nvsv_tree = read.tree(here(\"assets/mcc.tre\"))\n\nphylodynamics <- phylodynamic_process(vsv_tree)\n\nhead(phylodynamics$dyn)\n\n\n\n\n\n\ndate\nNe\nNe.low\nNe.high\n\n\n\n\n2016-01-09\n0.6075437\n0.1530336\n2.305747\n\n\n2016-01-07\n0.5598360\n0.1489246\n1.982533\n\n\n2016-01-04\n0.5197036\n0.1439427\n1.750127\n\n\n2016-01-02\n0.4856708\n0.1385381\n1.575660\n\n\n2015-12-31\n0.4565942\n0.1330237\n1.439976\n\n\n2015-12-29\n0.4315794\n0.1276110\n1.331279\n\n\n\n\n\n\nHide code\ncombined_data <- append_nearest_date(combined_data, phylodynamics$dyn, \"Ne\")\n\n\n\n\nHide code\nplot(phylodynamics$tree)\n\n\n\n\n\nFigure 5: VSV Phylogeny\n\n\n\n\n\n\nHide code\nplot(phylodynamics$Ne)\n\n\n\n\n\nFigure 6: VSV Effective Population size (Ne)."
+  },
+  {
+    "objectID": "overview.html#exposure",
+    "href": "overview.html#exposure",
+    "title": "Overview",
+    "section": "Exposure",
+    "text": "Exposure\n\n\nHide code\nhost_pop.r <- rast(here(\"assets/host_pop.tif\"))\n\ntessel_mesh <- vect(mesh_tessellation(mesh.dom))\n\ncrs(tessel_mesh) <- crs(domain)\n\ntessel_mesh$host_pop <- extract(host_pop.r, tessel_mesh, fun=\"sum\", na.rm=TRUE)[,\"host_pop\"]/10^3\n\nhost_pop <- as.data.frame(\n  extract(tessel_mesh, combined_data[,c(\"x\",\"y\")])) %>% \n  distinct(id.y, .keep_all = TRUE) \n\ncombined_data$host_pop <- host_pop$host_pop\n\nrange(combined_data$host_pop)\n\n\n[1]  0.00000 25.99372\n\n\n\n\nHide code\nplot_exposure_seq(mesh = mesh.dom, dd_nodes = dd, rast_data = host_pop.r, \n                  rast_scale = 10^3, xmin = -11500, xmax = -10500, ymin = 3500, ymax = 4500)"
+  },
+  {
+    "objectID": "overview.html#time-index",
+    "href": "overview.html#time-index",
+    "title": "Overview",
+    "section": "Time Index",
+    "text": "Time Index\nRecoding year and date variables as integer based indices.\n\n\nHide code\ncombined_data$year_step <- as.integer(as.factor(combined_data$year))\ncombined_data$day_step <- as.integer(as.factor(combined_data$date))"
+  },
+  {
+    "objectID": "overview.html#split-predictor-variable",
+    "href": "overview.html#split-predictor-variable",
+    "title": "Overview",
+    "section": "Split Predictor Variable",
+    "text": "Split Predictor Variable\nEnsuring a difference is evident between years within the fictitious prediction variables, which are intended to represent environmental conditions.\n\n\nHide code\ncombined_data <- combined_data %>%\n  mutate(pred_var_14 = if_else(year == 2014, pred_var, NA),\n         pred_var_15 = if_else(year == 2015, pred_var, NA))"
+  },
+  {
+    "objectID": "overview.html#projection",
+    "href": "overview.html#projection",
+    "title": "Overview",
+    "section": "Projection",
+    "text": "Projection\n\nRandom Field\nCoordinate locations in the data frame are matched or projected to the spatial mesh and a corresponding index is created to identify these locations during spatial field estimation.\n\n\nHide code\nk = length(unique(combined_data$year_step)) # number of years to model, each with a separate spatial field.\n\nlocs = cbind(combined_data$x, combined_data$y)\n\n# Match locations in data frame to locations in mesh\nA.pf = inla.spde.make.A(mesh.dom, \n                          alpha = 2,\n                          loc=locs,\n                          group = combined_data$year_step)\n\nspde0 = inla.spde2.pcmatern(mesh.dom, alpha = 2,\n                            prior.range=c(250, 0.01), # a 0.01 probability that auto correlation falls to zero at approximately 250km\n                            prior.sigma=c(1, 0.01),\n                            constr = TRUE)\n\n# index spatial field to have k replicates (2 replicates, one for each year)\nField.pf = inla.spde.make.index(\"Field.pf\", \n                               spde0$n.spde,\n                               n.group=k)\n\n\n\n\nOrganize Data\nFirst tier of the spatial model is organized as a list() object. This includes an intercept (\\beta_{\\Lambda}) and index for the spatial field (\\text{W}_{st}\\}).\n\n\nHide code\npf.lst = list(c(Field.pf, # index for spatial field\n                list(intercept1 = 1)), # intercept, \n                list(year_step1 = combined_data[,\"year_step\"])) # time index for year (t)\n\npf.stk = inla.stack(data = list(Y = cbind(combined_data$obs, NA)), # creating a two bivariate matrix, \n                                A = list(A.pf, 1), # projection matrix\n                          effects = pf.lst, # data frame \n                              tag = \"pf.0\") # label to pull data later\n\n\n\n\nEstimate Stack\nAs in prior chunk, data for the second tier of the model is organized as a list(). This includes an index (Field.st) to copy the spatial field from tier 1 (\\text{W}_{st}\\}) to tier 2, an intercept (\\beta_0), the fictitious prediction variables (, pred_var, \\beta_bX_{bst}), cluster variable (\\gamma_{clust}), effective population size (\\gamma_{ne}), and needed time indices (t).\nNOTE: Spatial fields are estimated for each year (two time steps), where as effective population size is daily.\n\n\nHide code\nA.est = inla.spde.make.A(mesh.dom, # projection as previously done\n                         alpha = 2,\n                         loc=locs,\n                         group = combined_data$year_step)\n\nField.est = inla.spde.make.index(\"Field.est\", # index spatial filed to copy W_st from tier 1\n                                 spde0$n.spde,\n                                 n.group=k)\n\nest.lst = list(c(Field.est, # spatial field\n                 list(intercept2 = 1)), # level specific intercept\n                 list(pred_var_14 = combined_data[,\"pred_var_14\"], # fictitious fixed/linear effect\n                      pred_var_15 = combined_data[,\"pred_var_15\"],\n                      NN = combined_data[,\"NN\"], # cluster distances\n                      Ne = combined_data[,\"Ne\"], # effective population size\n                      year_step1 = combined_data[,\"year_step\"], # time indices\n                      day_step = combined_data[,\"day_step\"]))\n\nest.stk = inla.stack(data = list(Y = cbind(NA, combined_data$obs), # creating a two bivariate matrix\n                                 e = combined_data$host_pop), # estimated host exposure\n                                 A = list(A.est, 1), \n                           effects = est.lst,   \n                               tag = \"est.0\")\n\n\n\njoint.stk = inla.stack(pf.stk, est.stk) # join Tier 1 and Tier 2 to a common list object"
+  },
+  {
+    "objectID": "overview.html#model-formula",
+    "href": "overview.html#model-formula",
+    "title": "Overview",
+    "section": "Model Formula",
+    "text": "Model Formula\nThe model is described fully in the manuscript but is provided below as a reference for comparison to code.\n\\begin{align}\n   \\text{log}(\\Lambda_{st}) &= W_{st} \\nonumber \\\\ \\nonumber\n    \\quad \\quad \\Lambda_{st} &= \\text{exp}\\{\\beta_{\\Lambda} + \\text{W}_{st}\\}\\\\ \\nonumber\n    \\text{W}_{st} &\\overset{\\textit{iid}}{\\sim} \\textit{N}(0, \\text{Q}(\\textit{r},\\sigma)) \\\\ \\nonumber\n    \\textit{r} &\\sim \\textit{Pr}(250, 0.01) \\\\ \\nonumber\n    \\sigma &\\sim \\textit{Pr}(1, 0.01) \\\\ \\nonumber\n   \\text{Y}_{st}|\\lambda_{st}  &\\sim \\text{Poisson}(\\mu_{st})  \\nonumber \\\\ \\nonumber\n   \\mu_{st} &= \\textit{E}_{\\textit{st}}\\lambda_{st} \\\\ \\nonumber\n   log(\\mu_{\\textit{st}}) &= log(\\textit{E}_{\\textit{st}}) + log(\\lambda_{\\textit{st}}) \\\\ \\nonumber\n   log(\\lambda_{\\textit{st}}) &=  \\beta_0 + \\sum_{b=1}^{B} \\beta_bX_{bst} + \\gamma_{clust} + \\gamma_{river} + \\gamma_{ne} + \\alpha \\text{W}_{st}  \\\\  \\nonumber\n   \\beta_b &= (\\beta_{eddi}, \\beta_{wet}, \\beta_{temp}, \\beta_{seas}, \\beta_{carb}, \\beta_{shrb}, \\beta_{elev}, \\beta_{ndvi}) \\\\ \\nonumber\n   \\beta_b &\\sim \\textit{N}(1, 0.001) \\\\ \\nonumber\n   \\gamma_{clust}, \\gamma_{river} &\\sim \\textit{Pr}(1, 0.01) \\\\ \\nonumber\n   \\gamma_{ne} &\\sim \\textit{Pr}(3, 0.01) \\\\ \\nonumber\n\\end{align}\n\n\nHide code\npcprior1 = list(prec = list(prior=\"pc.prec\", param = c(1, 0.01))) \nhc1 = list(theta = list(prior = 'normal', param = c(0, 10)))\nctr.g = list(model = 'iid', hyper = hc1)\n\nFormula.1 = Y ~ -1 + intercept1 + # intercept tier 1\n                     intercept2 + # intercept tier 2\n                        f(Field.pf, # spatial index for tier 1 spatial field\n                          model=spde0,\n                          group = Field.pf.group, # group by year, k=2\n                            control.group=ctr.g) +\n                  f(Field.est, # create copy of tier 1 spatial field\n                    copy = \"Field.pf\", \n                          group = Field.est.group, \n                            fixed = FALSE,\n                            hyper = hc1) + # IID between years\n                          f(NN,     # Cluster distance\n                    model=\"rw1\", # order-1 random walk\n                    constr=TRUE, # center values\n                            replicate = year_step1, # estimate independently (IID) for each year\n                    scale.model=TRUE, # internal scaling\n                            hyper=pcprior1) + #Penalizing complexity priors\n                  f(day_step, Ne,   # Similar to above, but for effective population size\n                    model=\"rw1\", \n                    constr=TRUE,\n                    scale.model=TRUE,\n                            hyper=pcprior1) +\n                  pred_var_14 + pred_var_15 # linear effects"
+  },
+  {
+    "objectID": "overview.html#create-grid",
+    "href": "overview.html#create-grid",
+    "title": "Overview",
+    "section": "Create Grid",
+    "text": "Create Grid\nCreatin a point grid and raster to visulaize results.\n\n\nHide code\nblank.r <- obs_stack.r[[1]]\nblank.r[!is.na(blank.r)] <- 0\n\ngrid_pnts <- as.points(blank.r)\nnames(grid_pnts) <- \"cell_value\"\n\n\ngrid_coords <- grid_pnts %>%\n  geom() %>%\n  as.data.frame() \n\nAp = inla.spde.make.A(mesh.dom, \n                      loc = cbind(grid_coords[,\"x\"], \n                                  grid_coords[,\"y\"]))"
+  },
+  {
+    "objectID": "overview.html#cluster-distance-1",
+    "href": "overview.html#cluster-distance-1",
+    "title": "Overview",
+    "section": "Cluster Distance",
+    "text": "Cluster Distance\n\n\nHide code\nplot_cluster(Model.demo)\n\n\n\n\n\nFigure 8: Spatial clustering of simulated disease detections"
+  },
+  {
+    "objectID": "overview.html#linear-coefficients",
+    "href": "overview.html#linear-coefficients",
+    "title": "Overview",
+    "section": "Linear Coefficients",
+    "text": "Linear Coefficients\n\n\nHide code\nplot_fixed_marginals(Model.demo, c(\"pred_var_14\", \"pred_var_15\"))\n\n\n\n\n\nFigure 9: Fictitious linear effects constructed with different mean averages."
+  },
+  {
+    "objectID": "overview.html#phylodynamic-effect",
+    "href": "overview.html#phylodynamic-effect",
+    "title": "Overview",
+    "section": "Phylodynamic Effect",
+    "text": "Phylodynamic Effect\n\n\nHide code\nplot_phylodynamic(Model.demo, parameter = \"day_step\")\n\n\n\n\n\nFigure 10: Effective population size effect."
+  },
+  {
+    "objectID": "overview.html#spatial-random-fields",
+    "href": "overview.html#spatial-random-fields",
+    "title": "Overview",
+    "section": "Spatial Random Fields",
+    "text": "Spatial Random Fields\nExtract estimates from model and rasterize them for visualization.\n\n\nHide code\nmrf_pf <- cbind(Model.demo$summary.random$Field.pf$mean, \n                Field.pf$Field.pf.group)\n\nmrf_pf_v <- list()\nmrf_pf_v  <- split(mrf_pf[,1], mrf_pf[,2])\n\ngrid_pnts$pf_2014 <- drop(Ap %*% mrf_pf_v[[1]]) \ngrid_pnts$pf_2015 <- drop(Ap %*% mrf_pf_v[[2]]) \n\npf_14.r <- rasterize(grid_pnts, \n                    blank.r, \n                    \"pf_2014\",\n                    background = NA)\n\npf_15.r <- rasterize(grid_pnts, \n                    blank.r, \n                    \"pf_2015\",\n                    background = NA)\n\npf_stack.r <-list(pf_14.r, pf_15.r)\n\n\n\n\nHide code\nplot_rast_panels(pf_stack.r, domain, join_sims, rev(cubehelix(50)), plot_pnts = FALSE, center=TRUE)\n\n\n\n\n\nFigure 11: Year specific Spatial Random Fields estimated by demonstarted model. Similiar to those used to used for simulation."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "VSV Genomes & Geography",
+    "section": "",
+    "text": "Supporting Information (in review)\n\n\n\nThis site provides a demonstrative workflow and supporting information for the publication:\nInterrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics\nAuthors: Humphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and Rodriguez\nAll code and data shown here can be downloaded from the associated GitHub site: https://github.com/geoepi/vs-epizootics"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "Quarto allows you to weave together content and into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "index.html#running-code",
+    "href": "index.html#running-code",
+    "title": "Workflow",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\nHide code\n1 + 1\n\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "overview.html#host-exposure",
+    "href": "overview.html#host-exposure",
+    "title": "Overview",
+    "section": "Host Exposure",
+    "text": "Host Exposure\nBecause the goal is to estimate disease intensity for a geographic area, not just individual point locations, it is necessary to identify the exposure rate of livestock (disease hosts) to VSV. That is, estimates for host population must be assigned to point locations. Host population, represented here by the host_pop raster file, must be added to the data frame. However, coordinates need to represent a geographic area, not just a point, thus a simple point extraction from the raster would be naive. Instead, natural neighborhoods are defined based on node locations, then total host population is summed across this areal extent before adding the value to the node point associated with that neighborhood. This is process is carried out using the mesh_tessellation() function below.\n\n\nHide code\nhost_pop.r <- rast(here(\"assets/host_pop.tif\"))\n\ntessel_mesh <- vect(mesh_tessellation(mesh.dom))\n\ncrs(tessel_mesh) <- crs(domain)\n\n# scale the population\ntessel_mesh$host_pop <- extract(host_pop.r, tessel_mesh, fun=\"sum\", na.rm=TRUE)[,\"host_pop\"]/10^3\n\nhost_pop <- as.data.frame(\n  extract(tessel_mesh, combined_data[,c(\"x\",\"y\")])) %>% \n  distinct(id.y, .keep_all = TRUE) \n\ncombined_data$host_pop <- host_pop$host_pop\n\n\n\n\nHide code\nplot_exposure_seq(mesh = mesh.dom, dd_nodes = dd, rast_data = host_pop.r, \n                  rast_scale = 10^3, xmin = -11500, xmax = -10500, ymin = 3500, ymax = 4500)\n\n\n\n\n\nFigure 7: Plots depict the exposure estimation process with color indicating host abundance(darker tones indicate more hosts). Mesh overlying a continuous host abudnance raster grid (top left), removing mesh edges from plot and calculating natural neighborhoods around nodes using tesselation (top right), removing nodes to show total host abundance summed to neighborhood areas (bottom left), and showing assignment of neighborhood sums back to nodes (bottom right)."
+  }
+]
