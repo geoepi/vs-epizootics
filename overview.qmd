@@ -41,7 +41,7 @@ This site provides a demonstrative workflow and supporting information for the p
 Authors:  
 Humphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and  Rodriguez  
    
-All code and data are available for dowload:    
+All code and data are available for download:    
 [GitHub site: https://github.com/geoepi/vs-epizootics](https://github.com/geoepi/vs-epizootics)    
 :::
 
