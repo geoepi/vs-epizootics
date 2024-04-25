@@ -8,11 +8,9 @@ website:
     left:
       - href: overview.qmd
         text: Overview 
-      - href: references.qmd
-        text: References 
     tools:
       - icon: github
-        href: https://github.com/geoepi/
+        href: https://github.com/geoepi/vs-epizootics
   page-footer:
     right: "Built with [Quarto](https://quarto.org/)"
 

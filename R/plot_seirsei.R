@@ -26,14 +26,15 @@ plot_seirsei <- function(output){
       scale_fill_manual(values = c("#FFFF99",  "#A6CEE3","#FB9A99", "#B2DF8A")) + 
       xlab(year_label) + 
       ylab("Population") +
+      labs(color = "Compartment") +
       theme_bw() +
       theme(plot.margin = unit(c(1,0.5,1,0.5),"cm"),
             legend.direction = "horizontal",
-            legend.position="none", 
+            legend.position= "bottom", 
             strip.text = element_text(size=18, face="bold"),
             strip.background = element_blank(),
             legend.key.size = unit(2,"line"),
-            legend.key.width = unit(3,"line"),
+            legend.key.width = unit(1.5,"line"),
             legend.text = element_text(size=16, face="bold"),
             legend.title = element_text(size=18, face="bold"),
             axis.title.x = element_text(size=24, face="bold"),

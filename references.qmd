@@ -1,2 +1,32 @@
-**Interrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics** (*in review*)
-Humphreys, J.M.; Velazquez Salinas, L.; Shults, P.; Bertram, M.; Pelzel-McCluskey, A.M.; Peters, D.P.C.; Rodriguez, L.L. 
+---
+title: ""
+bibliography: references.bib
+format:
+  html: 
+    df-print: kable
+    code-fold: show
+    code-summary: "Hide code"
+    code-overflow: wrap
+    toc-title: Page Contents
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+    html-math-method: katex
+    smooth-scroll: true
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+::: {.callout-note icon=false}
+#### Supporting Information (*in review*) 
+This site provides a demonstrative workflow and supporting information for the publication:  
+**Interrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics**  
+  
+Authors: Humphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and  Rodriguez    
+   
+All code and data shown here can be downloaded from the associated [GitHub site: https://github.com/geoepi/vs-epizootics](https://github.com/geoepi/vs-epizootics)  
+:::
+
+   
