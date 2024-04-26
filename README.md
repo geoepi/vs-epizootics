@@ -10,5 +10,4 @@ Humphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and  Ro
 A webpage based version of the code and results are available at the following link:    
 [GitHub site: https://geoepi.github.io/vs-epizootics/](https://geoepi.github.io/vs-epizootics/)   
 
-#### Download all code and data 
-<a class="github-button" href="https://github.com/geoepi/vs-epizootics/archive/refs/heads/main.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download buttons/github-buttons on GitHub">Download</a>
+#### <a class="github-button" href="https://github.com/geoepi/vs-epizootics/archive/refs/heads/main.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download buttons/github-buttons on GitHub">Download</a> all code and data 
