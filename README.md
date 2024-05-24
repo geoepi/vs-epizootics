@@ -5,9 +5,11 @@ This repo provides a demonstrative workflow and supporting information for the p
 **Interrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics**  
   
 Authors:  
-Humphreys, Velazquez Salinas, Shults, Bertram, Pelzel-McCluskey, Peters, and  Rodriguez  
+Humphreys, Shults, Velazquez Salinas, Bertram, Pelzel-McCluskey, Peters, and  Rodriguez  
    
 A webpage based version of the code and results are available at the following link:    
-[GitHub site: https://geoepi.github.io/vs-epizootics/](https://geoepi.github.io/vs-epizootics/)   
-
+[GitHub site: https://geoepi.github.io/vs-epizootics/](https://geoepi.github.io/vs-epizootics/)  
+  
+Archives of versioned data and related supporting documents are available on the Open Science Framework (OSF) at [Interrogating VSV Genomes and Geography](https://osf.io/ghzfq/)  
+   
 #### <a class="github-button" href="https://github.com/geoepi/vs-epizootics/archive/refs/heads/main.zip" data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-download" data-size="large" aria-label="Download buttons/github-buttons on GitHub">Download</a> all code and data 
