@@ -1,4 +1,4 @@
-# vs-epizootics
+# vs-epizootics [![Website geoepi.github.io/vs-epizootics/](https://img.shields.io/website-up-down-green-red/https/naereen.github.io.svg)](https://geoepi.github.io/vs-epizootics/)
 
 #### Supporting Information (*in review*) 
 This repo provides a demonstrative workflow and supporting information for the publication:  
