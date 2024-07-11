@@ -8,7 +8,9 @@ website:
     left:
       - href: overview.qmd
         text: Overview 
-    tools:
+    right:
+      - href: https://geoepi.github.io/
+        text: GeoEpi
       - icon: github
         href: https://github.com/geoepi/vs-epizootics
   page-footer:

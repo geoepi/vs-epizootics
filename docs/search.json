@@ -4,7 +4,7 @@
     "href": "overview.html",
     "title": "Overview",
     "section": "",
-    "text": "Supporting Information (in review)\n\n\n\nThis site provides a demonstrative workflow and supporting information for the publication:\nInterrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics\nAuthors:\nHumphreys, Shults, Velazquez Salinas, Bertram, Pelzel-McCluskey, Peters, and Rodriguez\nAll code and data are available for download:\nGitHub site: https://github.com/geoepi/vs-epizootics\nAdditional supporting information and documents available on the Open Science Framework:\nProject OSF site: https://osf.io/ghzfq/"
+    "text": "Supporting Information\n\n\n\nThis site provides a demonstrative workflow and supporting information for the publication:\nInterrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics\nHumphreys, Shults, Velazquez Salinas, Bertram, Pelzel-McCluskey, Peters, and Rodriguez\nViruses. 2024; 16(7):1118. https://doi.org/10.3390/v16071118"
   },
   {
     "objectID": "overview.html#load-libraries",
