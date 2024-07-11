@@ -11,6 +11,8 @@ website:
     right:
       - href: https://geoepi.github.io/
         text: GeoEpi
+      - href: https://geoepi.github.io/pindex.html
+        text: Research
       - icon: github
         href: https://github.com/geoepi/vs-epizootics
   page-footer:
