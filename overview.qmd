@@ -56,9 +56,7 @@ Additional supporting information and documents available on the Open Science Fr
 
   
 ### Navigation  
-The menu at right can be used to navigate through the workflow.    
-
-   
+The menu at right can be used to navigate through major sections on a webpage.  Links across top of page will direct to genomic data ([GENOMES](https://geoepi.github.io/vs-epizootics/sequences.html)), the GeoEpi home page ([GEOEPI](https://geoepi.github.io/)), or a listing of other GeoEpi projects ([RESEARCH](https://geoepi.github.io/pindex.html)).
    
 
 
