@@ -1,0 +1,2830 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>VSV Genomes &amp; Geography -</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/downloadthis-1.9.1/downloadthis.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">VSV Genomes &amp; Geography</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./overview.html">
+ <span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./sequences.html" aria-current="page">
+ <span class="menu-text">Genomes</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://geoepi.github.io/">
+ <span class="menu-text">GeoEpi</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://geoepi.github.io/pindex.html">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/geoepi/vs-epizootics"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<style type="text/css">
+
+body, td {
+   font-size: 13pt;
+}
+code.r{
+  font-size: 9pt;
+}
+pre {
+  font-size: 11pt
+}
+</style>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+VSV Sequences
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sequence data has been submitted to <a href="https://www.ncbi.nlm.nih.gov/genbank/">GenBank</a> but may not yet been released due to a pending data report publication still in review. Code below will provide an accession numbers table. This page will be updated when genomic data becomes publicly available.</p>
+</div>
+</div>
+<section id="download-sequence-accession-numbers" class="level4">
+<h4 class="anchored" data-anchor-id="download-sequence-accession-numbers">Download <em>sequence accession numbers</em></h4>
+<p><a href="#dnldts48863" onclick="fetch('data:text/csv;base64,c2VxdWVuY2VfbmFtZSxjb2xsZWN0aW9uX2RhdGUsY291bnRyeSxzdGF0ZSxjb3VudHksaG9zdCxHZW5CYW5rX0FjY2Vzc2lvbixTUkFfQWNjZXNzaW9uDQpOSjAxMTZDT0IsMjAxNi0wMS0yOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgWXVtYSxCb3ZpbmUsT1A5NzE0NTYsU0FNTjMyMTI2NzE0DQpOSjEyMTVORUIsMjAxNS0xMi0wNixVbml0ZWQgU3RhdGVzLCBOZWJyYXNrYSwgTG9nYW4sQm92aW5lLE9QOTcxNDU1LFNBTU4zMjEyNjcxMw0KTkoxMTE1Q09CNywyMDE1LTExLTE2LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBHYXJmaWVsZCxCb3ZpbmUsT1A5NzE0NTQsU0FNTjMyMTI2NzEyDQpOSjExMTVDT0IyLDIwMTUtMTEtMTAsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEVhZ2xlLEJvdmluZSxPUDk3MTQ1MixTQU1OMzIxMjY3MTANCk5KMTExNUNPQjMsMjAxNS0xMS0xMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWFnbGUsQm92aW5lLE9QOTcxNDUzLFNBTU4zMjEyNjcxMQ0KTkoxMTE1Q09FNiwyMDE1LTExLTA5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBFbCBQYXNvLEVxdWluZSxPUDk3MTQ5OSxTQU1OMzIxMTYxMzkNCk5KMTExNUNPQjEsMjAxNS0xMS0wNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgR2FyZmllbGQsQm92aW5lLE9QOTcxNDUxLFNBTU4zMjEyNjcwOQ0KTkoxMTE1Q09FNSwyMDE1LTExLTA0LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBFbGJlcnQsRXF1aW5lLE9QOTcxNDk4LFNBTU4zMjExNjEzOA0KTkoxMTE1Q09FNCwyMDE1LTExLTAyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBFbCBQYXNvLEVxdWluZSxPUDk3MTQ5NyxTQU1OMzIxMTYxMzcNCk5KMTExNUNPRTEsMjAxNS0xMS0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWxiZXJ0LEVxdWluZSxPUDk3MTQ5NCxTQU1OMzIxMTYxMzQNCk5KMTExNUNPRTIsMjAxNS0xMS0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWxiZXJ0LEVxdWluZSxPUDk3MTQ5NSxTQU1OMzIxMTYxMzUNCk5KMTExNUNPRTMsMjAxNS0xMS0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWxiZXJ0LEVxdWluZSxPUDk3MTQ5NixTQU1OMzIxMTYxMzYNCk5KMTAxNUNPQjQsMjAxNS0xMC0zMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRGVsdGEsQm92aW5lLE9QOTcxNDQzLFNBTU4zMjEyNjYyMQ0KTkoxMDE1U0RCMywyMDE1LTEwLTI4LFVuaXRlZCBTdGF0ZXMsIFNvdXRoIERha290YSwgTGF3cmVuY2UsQm92aW5lLE9QOTcxNDQ4LFNBTU4zMjEyNjcwNg0KTkoxMDE1Q09FMTEsMjAxNS0xMC0yOCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgR2FyZmllbGQsRXF1aW5lLE9QOTcxNDkzLFNBTU4zMjExNjEzMw0KTkoxMDE1U0RCMiwyMDE1LTEwLTI2LFVuaXRlZCBTdGF0ZXMsIFNvdXRoIERha290YSwgRmFsbCBSaXZlcixCb3ZpbmUsT1A5NzE0NDcsU0FNTjMyMTI2NzA1DQpOSjEwMTVTREIxLDIwMTUtMTAtMjEsVW5pdGVkIFN0YXRlcywgU291dGggRGFrb3RhLCBDdXN0ZXIsQm92aW5lLE9QOTcxNDQ2LFNBTU4zMjEyNjcwNA0KTkoxMDE1Q09FMTAsMjAxNS0xMC0yMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWxiZXJ0LEVxdWluZSxPUDk3MTQ5MixTQU1OMzIxMTU5OTENCk5KMTAxNVdZRSwyMDE1LTEwLTIwLFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIENyb29rLEVxdWluZSxPUDk3MTQ1MCxTQU1OMzIxMjY3MDgNCk5KMTAxNUNPRTksMjAxNS0xMC0xNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWwgUGFzbyxFcXVpbmUsT1A5NzE0OTEsU0FNTjMyMTE1OTkwDQpOSjEwMTVVVEIsMjAxNS0xMC0xMyxVbml0ZWQgU3RhdGVzLCBVdGFoLCBVaW50YWgsQm92aW5lLE9QOTcxNDQ5LFNBTU4zMjEyNjcwNw0KTkoxMDE1Q09FNiwyMDE1LTEwLTEyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBFbCBQYXNvLEVxdWluZSxPUDk3MTQ4OCxTQU1OMzIxMTU5ODcNCk5KMTAxNUNPRTcsMjAxNS0xMC0xMixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWwgUGFzbyxFcXVpbmUsT1A5NzE0ODksU0FNTjMyMTE1OTg4DQpOSjEwMTVDT0U4LDIwMTUtMTAtMTIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEdhcmZpZWxkLEVxdWluZSxPUDk3MTQ5MCxTQU1OMzIxMTU5ODkNCk5KMTAxNUNPQjEsMjAxNS0xMC0wOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTWVzYSxCb3ZpbmUsT1A5NzE0NDIsU0FNTjMyMTI2NjIwDQpOSjEwMTVDT0U1LDIwMTUtMTAtMDgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJyb29tZmllbGQsRXF1aW5lLE9QOTcxNDg3LFNBTU4zMjExNTk4Ng0KTkoxMDE1Q09FNCwyMDE1LTEwLTA3LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBGcmVtb250LEVxdWluZSxPUDk3MTQ4NixTQU1OMzIxMTU5ODUNCk5KMTAxNUNPRTEsMjAxNS0xMC0wNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWwgUGFzbyxFcXVpbmUsT1A5NzE0ODMsU0FNTjMyMTE1OTgyDQpOSjEwMTVDT0UyLDIwMTUtMTAtMDYsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIERvdWdsYXMsRXF1aW5lLE9QOTcxNDg0LFNBTU4zMjExNTk4Mw0KTkoxMDE1Q09FMywyMDE1LTEwLTA2LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNZXNhLEVxdWluZSxPUDk3MTQ4NSxTQU1OMzIxMTU5ODQNCk5KMTAxNU5FRSwyMDE1LTEwLTAzLFVuaXRlZCBTdGF0ZXMsIE5lYnJhc2thLCBCYW5uZXIsRXF1aW5lLE9QOTcxNDQ1LFNBTU4zMjEyNjcwMw0KTkoxMDE1TkVCLDIwMTUtMTAtMDEsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixCb3ZpbmUsT1A5NzE0NDQsU0FNTjMyMTI2NzAyDQpOSjA5MTVDT0UxMCwyMDE1LTA5LTMwLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBHYXJmaWVsZCxFcXVpbmUsT1A5NzE0ODIsU0FNTjMyMTE1OTgxDQpOSjA5MTVDT0U5LDIwMTUtMDktMjksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEZyZW1vbnQsRXF1aW5lLE9QOTcxNDgxLFNBTU4zMjExNTk4MA0KTkowOTE1TkVCMiwyMDE1LTA5LTI4LFVuaXRlZCBTdGF0ZXMsIE5lYnJhc2thLCBTY290dHMgQmx1ZmYsQm92aW5lLE9QOTcxNDI0LFNBTU4zMjEyNjYwMg0KTkowOTE1Q09FOCwyMDE1LTA5LTI3LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNb3JnYW4sRXF1aW5lLE9QOTcxNDgwLFNBTU4zMjExNTk3OQ0KTkowOTE1V1lCNSwyMDE1LTA5LTIzLFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIENvbnZlcnNlLEJvdmluZSxPUDk3MTQ0MCxTQU1OMzIxMjY2MTgNCk5KMDkxNUNPRTcsMjAxNS0wOS0yMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTW9mZmF0LEVxdWluZSxPUDk3MTQ3OSxTQU1OMzIxMTU5NzgNCk5KMDkxNU5FQjEsMjAxNS0wOS0xOSxVbml0ZWQgU3RhdGVzLCBOZWJyYXNrYSwgU2NvdHRzIEJsdWZmLEJvdmluZSxPUDk3MTQyMyxTQU1OMzIxMjY2MDENCk5KMDkxNUNPQjYsMjAxNS0wOS0xOCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxCb3ZpbmUsT1A5NzE0MjIsU0FNTjMyMTI2NjAwDQpOSjA5MTVDT0U2LDIwMTUtMDktMTcsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxNDc4LFNBTU4zMjExNTk3Nw0KTkowOTE1Q09CNCwyMDE1LTA5LTE2LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNaW5lcmFsLEJvdmluZSxPUDk3MTQyMCxTQU1OMzIxMjY1OTgNCk5KMDkxNUNPQjUsMjAxNS0wOS0xNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTWluZXJhbCxCb3ZpbmUsT1A5NzE0MjEsU0FNTjMyMTI2NTk5DQpOSjA5MTVORUU4LDIwMTUtMDktMTYsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIExpbmNvbG4sRXF1aW5lLE9QOTcxNDMyLFNBTU4zMjEyNjYxMA0KTkowOTE1V1lCMiwyMDE1LTA5LTE2LFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIEFsYmFueSxCb3ZpbmUsT1A5NzE0MzcsU0FNTjMyMTI2NjE1DQpOSjA5MTVXWUIzLDIwMTUtMDktMTYsVW5pdGVkIFN0YXRlcywgV3lvbWluZywgQ29udmVyc2UsQm92aW5lLE9QOTcxNDM4LFNBTU4zMjEyNjYxNg0KTkowOTE1V1lCNCwyMDE1LTA5LTE2LFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIENvbnZlcnNlLEJvdmluZSxPUDk3MTQzOSxTQU1OMzIxMjY2MTcNCk5KMDkxNUNPRTUsMjAxNS0wOS0xNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzE0NzcsU0FNTjMyMTE1OTc2DQpOSjA5MTVORUU2LDIwMTUtMDktMTUsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MzAsU0FNTjMyMTI2NjA4DQpOSjA5MTVORUU3LDIwMTUtMDktMTUsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MzEsU0FNTjMyMTI2NjA5DQpOSjA5MTVXWUIxLDIwMTUtMDktMTUsVW5pdGVkIFN0YXRlcywgV3lvbWluZywgQ29udmVyc2UsQm92aW5lLE9QOTcxNDM2LFNBTU4zMjEyNjYxNA0KTkowOTE1TkVFNSwyMDE1LTA5LTExLFVuaXRlZCBTdGF0ZXMsIE5lYnJhc2thLCBTY290dHMgQmx1ZmYsRXF1aW5lLE9QOTcxNDI5LFNBTU4zMjEyNjYwNw0KTkowOTE1V1lFLDIwMTUtMDktMTEsVW5pdGVkIFN0YXRlcywgV3lvbWluZywgTmF0cm9uYSxFcXVpbmUsT1A5NzE0NDEsU0FNTjMyMTI2NjE5DQpOSjA5MTVORUUzLDIwMTUtMDktMDksVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MjcsU0FNTjMyMTI2NjA1DQpOSjA5MTVORUU0LDIwMTUtMDktMDksVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MjgsU0FNTjMyMTI2NjA2DQpOSjA5MTVORUUxLDIwMTUtMDktMDgsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MjUsU0FNTjMyMTI2NjAzDQpOSjA5MTVORUUyLDIwMTUtMDktMDgsVW5pdGVkIFN0YXRlcywgTmVicmFza2EsIFNjb3R0cyBCbHVmZixFcXVpbmUsT1A5NzE0MjYsU0FNTjMyMTI2NjA0DQpOSjA5MTVVVEIsMjAxNS0wOS0wOCxVbml0ZWQgU3RhdGVzLCBVdGFoLCBVaW50YWgsQm92aW5lLE9QOTcxNDM1LFNBTU4zMjEyNjYxMw0KTkowOTE1Q09FNCwyMDE1LTA5LTA3LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBSb3V0dCxFcXVpbmUsT1A5NzE0NzYsU0FNTjMyMTE1OTc1DQpOSjA5MTVDT0IyLDIwMTUtMDktMDIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIENvbmVqb3MsQm92aW5lLE9QOTcxNDE4LFNBTU4zMjEyNjU5Ng0KTkowOTE1Q09CMywyMDE1LTA5LTAyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBDb25lam9zLEJvdmluZSxPUDk3MTQxOSxTQU1OMzIxMjY1OTcNCk5KMDkxNVNEQjEsMjAxNS0wOS0wMSxVbml0ZWQgU3RhdGVzLCBTb3V0aCBEYWtvdGEsIExhd3JlbmNlLEJvdmluZSxPUDk3MTQzMyxTQU1OMzIxMjY2MTENCk5KMDkxNVNEQjIsMjAxNS0wOS0wMSxVbml0ZWQgU3RhdGVzLCBTb3V0aCBEYWtvdGEsIExhd3JlbmNlLEJvdmluZSxPUDk3MTQzNCxTQU1OMzIxMjY2MTINCk5KMDkxNUNPRTEsMjAxNS0wOS0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzE0NzMsU0FNTjMyMTE1Njg4DQpOSjA5MTVDT0UyLDIwMTUtMDktMDEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIERvdWdsYXMsRXF1aW5lLE9QOTcxNDc0LFNBTU4zMjExNTY4OQ0KTkowOTE1Q09FMywyMDE1LTA5LTAxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNZXNhLEVxdWluZSxPUDk3MTQ3NSxTQU1OMzIxMTU5NzQNCk5KMDgxNUNPRTExLDIwMTUtMDgtMzEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1lc2EsRXF1aW5lLE9QOTcxNDcyLFNBTU4zMjExNTY4Nw0KTkowODE1U0RFMiwyMDE1LTA4LTI4LFVuaXRlZCBTdGF0ZXMsIFNvdXRoIERha290YSwgRmFsbCBSaXZlcixFcXVpbmUsT1A5NzE0MTQsU0FNTjMyMTI2NTkyDQpOSjA4MTVTREIsMjAxNS0wOC0yNyxVbml0ZWQgU3RhdGVzLCBTb3V0aCBEYWtvdGEsIExhd3JlbmNlLEJvdmluZSxPUDk3MTQxMixTQU1OMzIxMjY1OTANCk5KMDgxNUNPQjQsMjAxNS0wOC0yNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgUmlvIEdyYW5kZSxCb3ZpbmUsT1A5NzE0MTAsU0FNTjMyMTI2NTg4DQpOSjA4MTVXWUUyLDIwMTUtMDgtMjYsVW5pdGVkIFN0YXRlcywgV3lvbWluZywgUGxhdHRlLEVxdWluZSxPUDk3MTQxNyxTQU1OMzIxMjY1OTUNCk5KMDgxNUNPRTksMjAxNS0wOC0yNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzE0NzAsU0FNTjMyMTE1Njg1DQpOSjA4MTVDT0UxMCwyMDE1LTA4LTI1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNb250cm9zZSxFcXVpbmUsT1A5NzE0NzEsU0FNTjMyMTE1Njg2DQpOSjA4MTVDT0U4LDIwMTUtMDgtMjQsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxNDY5LFNBTU4zMjExNTY4NA0KTkowODE1Q09FNSwyMDE1LTA4LTIzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBSaW8gQmxhbmNvLEVxdWluZSxPUDk3MTQ2NixTQU1OMzIxMTU2ODENCk5KMDgxNUNPRTYsMjAxNS0wOC0yMyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTWVzYSxFcXVpbmUsT1A5NzE0NjcsU0FNTjMyMTE1NjgyDQpOSjA4MTVDT0U3LDIwMTUtMDgtMjMsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1lc2EsRXF1aW5lLE9QOTcxNDY4LFNBTU4zMjExNTY4Mw0KTkowODE1V1lFMSwyMDE1LTA4LTIxLFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIEFsYmFueSxFcXVpbmUsT1A5NzE0MTYsU0FNTjMyMTI2NTk0DQpOSjA4MTVDT0U0LDIwMTUtMDgtMTksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1vbnRyb3NlLEVxdWluZSxPUDk3MTQ2NSxTQU1OMzIxMTU2ODANCk5KMDgxNUNPQjMsMjAxNS0wOC0xNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRGVsdGEsQm92aW5lLE9QOTcxNDA5LFNBTU4zMjEyNjU4Nw0KTkowODE1Q09CMiwyMDE1LTA4LTEzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBSaW8gR3JhbmRlLEJvdmluZSxPUDk3MTQwOCxTQU1OMzIxMjY1ODYNCk5KMDgxNU5NQiwyMDE1LTA4LTEyLFVuaXRlZCBTdGF0ZXMsIE5ldyBNZXhpY28sIFNhbnRhIEZlLEJvdmluZSxPUDk3MTQxMSxTQU1OMzIxMjY1ODkNCk5KMDgxNUNPRTMsMjAxNS0wOC0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgSmVmZmVyc29uLEVxdWluZSxPUDk3MTQ2NCxTQU1OMzIxMTU2NzkNCk5KMDgxNVVUQiwyMDE1LTA4LTA2LFVuaXRlZCBTdGF0ZXMsIFV0YWgsIEdyYW5kLEJvdmluZSxPUDk3MTQxNSxTQU1OMzIxMjY1OTMNCk5KMDgxNUNPQjEsMjAxNS0wOC0wNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRGVsdGEsQm92aW5lLE9QOTcxNDA3LFNBTU4zMjEyNjU4NQ0KTkowODE1Q09FMiwyMDE1LTA4LTAzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBEZWx0YSxFcXVpbmUsT1A5NzE0NjMsU0FNTjMyMTE1Njc4DQpOSjA4MTVTREUxLDIwMTUtMDgtMDIsVW5pdGVkIFN0YXRlcywgU291dGggRGFrb3RhLCBNZWFkZSxFcXVpbmUsT1A5NzE0MTMsU0FNTjMyMTI2NTkxDQpOSjA4MTVDT0UxLDIwMTUtMDgtMDIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1lc2EsRXF1aW5lLE9QOTcxNDYyLFNBTU4zMjExNTY3Nw0KTkowNzE1VVRCLDIwMTUtMDctMzAsVW5pdGVkIFN0YXRlcywgVXRhaCwgU2FuIEp1YW4sQm92aW5lLE9QOTcxNDA0LFNBTU4zMjExODI4OQ0KTkowNzE1V1lFMiwyMDE1LTA3LTMwLFVuaXRlZCBTdGF0ZXMsIFd5b21pbmcsIEdvc2hlbixFcXVpbmUsT1A5NzE0MDYsU0FNTjMyMTE4MjkxDQpOSjA3MTVXWUUxLDIwMTUtMDctMjAsVW5pdGVkIFN0YXRlcywgV3lvbWluZywgR29zaGVuLEVxdWluZSxPUDk3MTQwNSxTQU1OMzIxMTgyOTANCk5KMDcxNUNPRTYsMjAxNS0wNy0xOCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRGVsdGEsRXF1aW5lLE9QOTcxNDYxLFNBTU4zMjExNTY3Ng0KTkowNzE1Q09FNSwyMDE1LTA3LTEzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNb250ZXp1bWEsRXF1aW5lLE9QOTcxNDYwLFNBTU4zMjExNTY3NQ0KTkowNzE1Q09FNCwyMDE1LTA3LTEyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTQ1OSxTQU1OMzIxMTU2NzQNCk5KMDcxNUNPRTEsMjAxNS0wNy0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTW9udHJvc2UsRXF1aW5lLE9QOTcxNDAyLFNBTU4zMjExODI4Nw0KTkowNzE1Q09FMiwyMDE1LTA3LTAxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNb250cm9zZSxFcXVpbmUsT1A5NzE0MDMsU0FNTjMyMTE4Mjg4DQpOSjA3MTVDT0UzLDIwMTUtMDctMDEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1vbnRlenVtYSxFcXVpbmUsT1A5NzE0NTgsU0FNTjMyMTE1NjczDQpOSjA2MTVDT0UsMjAxNS0wNi0zMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTW9udGV6dW1hLEVxdWluZSxPUDk3MTQ1NyxTQU1OMzIxMTU2NzINCk5KMDUxNVRYRSwyMDE1LTA1LTE5LFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBSZWV2ZXMsRXF1aW5lLE9QOTcxNDAxLFNBTU4zMjExODI4Ng0KTkowNTE1QVpFLDIwMTUtMDUtMTEsVW5pdGVkIFN0YXRlcywgQXJpem9uYSwgTWFyaWNvcGEsRXF1aW5lLE9QOTcxNDAwLFNBTU4zMjExODI4NQ0KTkowNDE1VVRFLDIwMTUtMDQtMjgsVW5pdGVkIFN0YXRlcywgVXRhaCwgS2FuZSxFcXVpbmUsT1A5NzEzOTksU0FNTjMyMTE4Mjg0DQpOSjExMTRORUIsMjAxNC0xMS0yMSxVbml0ZWQgU3RhdGVzLCBOZWJyYXNrYSwgV2hlZWxlcixCb3ZpbmUsT1A5NzEzOTgsU0FNTjMyMTE4MjgzDQpOSjExMTRDT0UyLDIwMTQtMTEtMTksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEZyZW1vbnQsRXF1aW5lLE9QOTcxMzk3LFNBTU4zMjExODI4Mg0KTkoxMTE0Q09CLDIwMTQtMTEtMDUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1vcmdhbixCb3ZpbmUsT1A5NzEzOTYsU0FNTjMyMTE4MjgxDQpOSjEwMTRDT0I3LDIwMTQtMTAtMjQsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsQm92aW5lLE9QOTcxMzg2LFNBTU4zMjExODI3MQ0KTkoxMDE0Q09CNiwyMDE0LTEwLTIxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMb2dhbixCb3ZpbmUsT1A5NzEzODUsU0FNTjMyMTE4MjcwDQpOSjEwMTRDT0IyLDIwMTQtMTAtMjAsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsQm92aW5lLE9QOTcxMzgxLFNBTU4zMjExODI2Ng0KTkoxMDE0Q09CMywyMDE0LTEwLTIwLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEJvdmluZSxPUDk3MTM4MixTQU1OMzIxMTgyNjcNCk5KMTAxNENPQjQsMjAxNC0xMC0yMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxCb3ZpbmUsT1A5NzEzODMsU0FNTjMyMTE4MjY4DQpOSjEwMTRDT0I1LDIwMTQtMTAtMjAsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsQm92aW5lLE9QOTcxMzg0LFNBTU4zMjExODI2OQ0KTkoxMDE0Q09FMTAsMjAxNC0xMC0xOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQXJhcGFob2UsRXF1aW5lLE9QOTcxMzk1LFNBTU4zMjExODI4MA0KTkoxMDE0Q09FOSwyMDE0LTEwLTE3LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBGcmVtb250LEVxdWluZSxPUDk3MTM5NCxTQU1OMzIxMTgyNzkNCk5KMTAxNENPQjEsMjAxNC0xMC0wNyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTW9yZ2FuLEJvdmluZSxPUDk3MTM4MCxTQU1OMzIxMTgyNjUNCk5KMTAxNENPRTcsMjAxNC0xMC0wNyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgRWwgUGFzbyxFcXVpbmUsT1A5NzEzOTIsU0FNTjMyMTE4Mjc3DQpOSjEwMTRDT0U4LDIwMTQtMTAtMDcsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEVsIFBhc28sRXF1aW5lLE9QOTcxMzkzLFNBTU4zMjExODI3OA0KTkoxMDE0Q09FMywyMDE0LTEwLTAzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBQdWVibG8sRXF1aW5lLE9QOTcxMzg4LFNBTU4zMjExODI3Mw0KTkoxMDE0Q09FNCwyMDE0LTEwLTAzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMb2dhbixFcXVpbmUsT1A5NzEzODksU0FNTjMyMTE4Mjc0DQpOSjEwMTRDT0U1LDIwMTQtMTAtMDMsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExvZ2FuLEVxdWluZSxPUDk3MTM5MCxTQU1OMzIxMTgyNzUNCk5KMTAxNENPRTYsMjAxNC0xMC0wMyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTG9nYW4sRXF1aW5lLE9QOTcxMzkxLFNBTU4zMjExODI3Ng0KTkoxMDE0Q09FMSwyMDE0LTEwLTAxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBGcmVtb250LEVxdWluZSxPUDk3MTM4NyxTQU1OMzIxMTgyNzINCk5KMDkxNENPRTEzLDIwMTQtMDktMjksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFB1ZWJsbyxFcXVpbmUsT1A5NzEzNzgsU0FNTjMyMTE4MjYzDQpOSjA5MTRDT0UxNCwyMDE0LTA5LTI5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBQdWVibG8sRXF1aW5lLE9QOTcxMzc5LFNBTU4zMjExODI2NA0KTkowOTE0Q09CMSwyMDE0LTA5LTE4LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEJvdmluZSxPUDk3MTM2MyxTQU1OMzIxMTc1NTYNCk5KMDkxNENPQjIsMjAxNC0wOS0xOCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxCb3ZpbmUsT1A5NzEzNjQsU0FNTjMyMTE3NTU3DQpOSjA5MTRDT0IzLDIwMTQtMDktMTgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsQm92aW5lLE9QOTcxMzY1LFNBTU4zMjExNzU1OA0KTkowOTE0Q09FMTEsMjAxNC0wOS0xNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgUHVlYmxvLEVxdWluZSxPUDk3MTM3NixTQU1OMzIxMTgyNjENCk5KMDkxNENPRTEyLDIwMTQtMDktMTYsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFB1ZWJsbyxFcXVpbmUsT1A5NzEzNzcsU0FNTjMyMTE4MjYyDQpOSjA5MTRDT0UxMCwyMDE0LTA5LTEyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTM3NSxTQU1OMzIxMTgyNjANCk5KMDkxNENPRTgsMjAxNC0wOS0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgUHVlYmxvLEVxdWluZSxPUDk3MTM3MyxTQU1OMzIxMTgyNTgNCk5KMDkxNENPRTksMjAxNC0wOS0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgUHVlYmxvLEVxdWluZSxPUDk3MTM3NCxTQU1OMzIxMTgyNTkNCk5KMDkxNENPRTcsMjAxNC0wOS0wOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzNzIsU0FNTjMyMTE4MjU3DQpOSjA5MTRDT0U1LDIwMTQtMDktMDgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFB1ZWJsbyxFcXVpbmUsT1A5NzEzNzAsU0FNTjMyMTE4MjU1DQpOSjA5MTRDT0U2LDIwMTQtMDktMDgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFB1ZWJsbyxFcXVpbmUsT1A5NzEzNzEsU0FNTjMyMTE4MjU2DQpOSjA5MTRDT0UxLDIwMTQtMDktMDMsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIERvdWdsYXMsRXF1aW5lLE9QOTcxMzY2LFNBTU4zMjExNzU1OQ0KTkowOTE0Q09FMiwyMDE0LTA5LTAyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMb2dhbixFcXVpbmUsT1A5NzEzNjcsU0FNTjMyMTE3NTYwDQpOSjA5MTRDT0UzLDIwMTQtMDktMDIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExvZ2FuLEVxdWluZSxPUDk3MTM2OCxTQU1OMzIxMTc1NjENCk5KMDkxNENPRTQsMjAxNC0wOS0wMixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzNjksU0FNTjMyMTE3NTYyDQpOSjA4MTRDT0U1MywyMDE0LTA4LTMwLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTM2MixTQU1OMzIxMTc1NTUNCk5KMDgxNENPRTUxLDIwMTQtMDgtMjgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEFyYXBhaG9lLEVxdWluZSxPUDk3MTM2MCxTQU1OMzIxMTc1NTMNCk5KMDgxNENPRTUyLDIwMTQtMDgtMjgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEFyYXBhaG9lLEVxdWluZSxPUDk3MTM2MSxTQU1OMzIxMTc1NTQNCk5KMDgxNENPRTQ4LDIwMTQtMDgtMjUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIE1vcmdhbixFcXVpbmUsT1A5NzEzNTcsU0FNTjMyMTE3NTUwDQpOSjA4MTRDT0U0OSwyMDE0LTA4LTI1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBNb3JnYW4sRXF1aW5lLE9QOTcxMzU4LFNBTU4zMjExNzU1MQ0KTkowODE0Q09FNTAsMjAxNC0wOC0yNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEzNTksU0FNTjMyMTE3NTUyDQpOSjA4MTRDT0U0NSwyMDE0LTA4LTIyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBCb3VsZGVyLEVxdWluZSxPUDk3MTM1NCxTQU1OMzIxMTc1NDcNCk5KMDgxNENPRTQ2LDIwMTQtMDgtMjIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzU1LFNBTU4zMjExNzU0OA0KTkowODE0Q09FNDcsMjAxNC0wOC0yMixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzNTYsU0FNTjMyMTE3NTQ5DQpOSjA4MTRDT0U0MywyMDE0LTA4LTIwLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBKZWZmZXJzb24sRXF1aW5lLE9QOTcxMzUyLFNBTU4zMjExNzU0NQ0KTkowODE0Q09FNDQsMjAxNC0wOC0yMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgSmVmZmVyc29uLEVxdWluZSxPUDk3MTM1MyxTQU1OMzIxMTc1NDYNCk5KMDgxNENPRTM5LDIwMTQtMDgtMTksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEplZmZlcnNvbixFcXVpbmUsT1A5NzEzNDgsU0FNTjMyMTE3NTQxDQpOSjA4MTRDT0U0MCwyMDE0LTA4LTE5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBKZWZmZXJzb24sRXF1aW5lLE9QOTcxMzQ5LFNBTU4zMjExNzU0Mg0KTkowODE0Q09FNDEsMjAxNC0wOC0xOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgSmVmZmVyc29uLEVxdWluZSxPUDk3MTM1MCxTQU1OMzIxMTc1NDMNCk5KMDgxNENPRTQyLDIwMTQtMDgtMTksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEplZmZlcnNvbixFcXVpbmUsT1A5NzEzNTEsU0FNTjMyMTE3NTQ0DQpOSjA4MTRDT0UzNywyMDE0LTA4LTE4LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTM0NixTQU1OMzIxMTc1MzkNCk5KMDgxNENPRTM2LDIwMTQtMDgtMTYsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzQ1LFNBTU4zMjExNzUzOA0KTkowODE0Q09FMzgsMjAxNC0wOC0xNixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzNDcsU0FNTjMyMTE3NTQwDQpOSjA4MTRDT0UzMiwyMDE0LTA4LTE1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBCb3VsZGVyLEVxdWluZSxPUDk3MTM0MSxTQU1OMzIxMTc1MzQNCk5KMDgxNENPRTMzLDIwMTQtMDgtMTUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMzQyLFNBTU4zMjExNzUzNQ0KTkowODE0Q09FMzQsMjAxNC0wOC0xNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzNDMsU0FNTjMyMTE3NTM2DQpOSjA4MTRDT0UzNSwyMDE0LTA4LTEzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBKZWZmZXJzb24sRXF1aW5lLE9QOTcxMzQ0LFNBTU4zMjExNzUzNw0KTkowODE0Q09FMjcsMjAxNC0wOC0xMixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzMzYsU0FNTjMyMTE3NTI5DQpOSjA4MTRDT0UyOSwyMDE0LTA4LTEyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBBZGFtcyxFcXVpbmUsT1A5NzEzMzgsU0FNTjMyMTE3NTMxDQpOSjA4MTRDT0UzMCwyMDE0LTA4LTEyLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMzOSxTQU1OMzIxMTc1MzINCk5KMDgxNENPRTMxLDIwMTQtMDgtMTIsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzQwLFNBTU4zMjExNzUzMw0KTkowODE0Q09FMjQsMjAxNC0wOC0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQWRhbXMsRXF1aW5lLE9QOTcxMzMzLFNBTU4zMjExNzUyNg0KTkowODE0Q09FMjUsMjAxNC0wOC0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQWRhbXMsRXF1aW5lLE9QOTcxMzM0LFNBTU4zMjExNzUyNw0KTkowODE0Q09FMjYsMjAxNC0wOC0xMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzMzUsU0FNTjMyMTE3NTI4DQpOSjA4MTRDT0UyMywyMDE0LTA4LTA5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBBZGFtcyxFcXVpbmUsT1A5NzEzMzIsU0FNTjMyMTE3NDU0DQpOSjA4MTRDT0UyOCwyMDE0LTA4LTA5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMzNyxTQU1OMzIxMTc1MzANCk5KMDgxNENPRTIxLDIwMTQtMDgtMDgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxMzMwLFNBTU4zMjExNzQ1Mg0KTkowODE0Q09FMjAsMjAxNC0wOC0wNyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzMjksU0FNTjMyMTE3NDUxDQpOSjA4MTRDT0UyMiwyMDE0LTA4LTA3LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMzMSxTQU1OMzIxMTc0NTMNCk5KMDgxNENPRTE5LDIwMTQtMDgtMDYsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzI4LFNBTU4zMjExNzQ1MA0KTkowODE0Q09FMTMsMjAxNC0wOC0wNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEzMjMsU0FNTjMyMTE3NDQ1DQpOSjA4MTRDT0UxNSwyMDE0LTA4LTA1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTMyNSxTQU1OMzIxMTc0NDcNCk5KMDgxNENPRTE2LDIwMTQtMDgtMDUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEplZmZlcnNvbixFcXVpbmUsT1A5NzEzMjYsU0FNTjMyMTE3NDQ4DQpOSjA4MTRDT0UxNywyMDE0LTA4LTA1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMyNyxTQU1OMzIxMTc0NDkNCk5KMDgxNENPQiwyMDE0LTA4LTA0LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBCb3VsZGVyLEJvdmluZSxPUDk3MTMxMCxTQU1OMzIxMTc0MzINCk5KMDgxNENPRTYsMjAxNC0wOC0wNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEzMTYsU0FNTjMyMTE3NDM4DQpOSjA4MTRDT0U3LDIwMTQtMDgtMDQsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxMzE3LFNBTU4zMjExNzQzOQ0KTkowODE0Q09FOCwyMDE0LTA4LTA0LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMxOCxTQU1OMzIxMTc0NDANCk5KMDgxNENPRTksMjAxNC0wOC0wNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEzMTksU0FNTjMyMTE3NDQxDQpOSjA4MTRDT0UxMCwyMDE0LTA4LTA0LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTMyMCxTQU1OMzIxMTc0NDINCk5KMDgxNENPRTExLDIwMTQtMDgtMDQsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzIxLFNBTU4zMjExNzQ0Mw0KTkowODE0Q09FMTQsMjAxNC0wOC0wNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEzMjQsU0FNTjMyMTE3NDQ2DQpOSjA4MTRDT0UxLDIwMTQtMDgtMDEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMzExLFNBTU4zMjExNzQzMw0KTkowODE0Q09FMiwyMDE0LTA4LTAxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBCb3VsZGVyLEVxdWluZSxPUDk3MTMxMixTQU1OMzIxMTc0MzQNCk5KMDgxNENPRTMsMjAxNC0wOC0wMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEzMTMsU0FNTjMyMTE3NDM1DQpOSjA4MTRDT0U0LDIwMTQtMDgtMDEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMzE0LFNBTU4zMjExNzQzNg0KTkowODE0Q09FNSwyMDE0LTA4LTAxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBEb3VnbGFzLEVxdWluZSxPUDk3MTMxNSxTQU1OMzIxMTc0MzcNCk5KMDgxNENPRTEyLDIwMTQtMDgtMDEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMzIyLFNBTU4zMjExNzQ0NA0KTkowNzE0Q09FMjksMjAxNC0wNy0zMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEyOTUsU0FNTjMyMTE3MDk5DQpOSjA3MTRDT0UzMCwyMDE0LTA3LTMxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTI5NixTQU1OMzIxMTc0MTgNCk5KMDcxNENPRTMxLDIwMTQtMDctMzEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMjk3LFNBTU4zMjExNzQxOQ0KTkowNzE0Q09FMzIsMjAxNC0wNy0zMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEyOTgsU0FNTjMyMTE3NDIwDQpOSjA3MTRDT0UzMywyMDE0LTA3LTMxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBMYXJpbWVyLEVxdWluZSxPUDk3MTI5OSxTQU1OMzIxMTc0MjENCk5KMDcxNENPRTI1LDIwMTQtMDctMzAsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxMjkxLFNBTU4zMjExNzA5NQ0KTkowNzE0Q09FMjYsMjAxNC0wNy0zMCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEyOTIsU0FNTjMyMTE3MDk2DQpOSjA3MTRDT0UyOCwyMDE0LTA3LTMwLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBCb3VsZGVyLEVxdWluZSxPUDk3MTI5NCxTQU1OMzIxMTcwOTgNCk5KMDcxNENPRTIyLDIwMTQtMDctMjksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIExhcmltZXIsRXF1aW5lLE9QOTcxMjg4LFNBTU4zMjExNzA5Mg0KTkowNzE0Q09FMjMsMjAxNC0wNy0yOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgTGFyaW1lcixFcXVpbmUsT1A5NzEyODksU0FNTjMyMTE3MDkzDQpOSjA3MTRDT0UyNCwyMDE0LTA3LTI5LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI5MCxTQU1OMzIxMTcwOTQNCk5KMDcxNFRYRTgsMjAxNC0wNy0yOSxVbml0ZWQgU3RhdGVzLCBUZXhhcywgVHJhdmlzLEVxdWluZSxPUDk3MTMwOSxTQU1OMzIxMTc0MzENCk5KMDcxNENPRTI3LDIwMTQtMDctMjgsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjkzLFNBTU4zMjExNzA5Nw0KTkowNzE0VFhFNiwyMDE0LTA3LTI4LFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBGYWxscyxFcXVpbmUsT1A5NzEzMDcsU0FNTjMyMTE3NDI5DQpOSjA3MTRUWEU3LDIwMTQtMDctMjgsVW5pdGVkIFN0YXRlcywgVGV4YXMsIEZhbGxzLEVxdWluZSxPUDk3MTMwOCxTQU1OMzIxMTc0MzANCk5KMDcxNENPRTEzLDIwMTQtMDctMjUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjc5LFNBTU4zMjExNzA4Mw0KTkowNzE0Q09FMTUsMjAxNC0wNy0yNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEyODEsU0FNTjMyMTE3MDg1DQpOSjA3MTRDT0UxNiwyMDE0LTA3LTI1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI4MixTQU1OMzIxMTcwODYNCk5KMDcxNENPRTE3LDIwMTQtMDctMjUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjgzLFNBTU4zMjExNzA4Nw0KTkowNzE0Q09FMTgsMjAxNC0wNy0yNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEyODQsU0FNTjMyMTE3MDg4DQpOSjA3MTRDT0UxOSwyMDE0LTA3LTI1LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI4NSxTQU1OMzIxMTcwODkNCk5KMDcxNENPRTIwLDIwMTQtMDctMjUsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxMjg2LFNBTU4zMjExNzA5MA0KTkowNzE0Q09FMjEsMjAxNC0wNy0yNSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEyODcsU0FNTjMyMTE3MDkxDQpOSjA3MTRUWEU1LDIwMTQtMDctMjUsVW5pdGVkIFN0YXRlcywgVGV4YXMsIEJhc3Ryb3AsRXF1aW5lLE9QOTcxMzA2LFNBTU4zMjExNzQyOA0KTkowNzE0Q09FMTIsMjAxNC0wNy0yNCxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEyNzgsU0FNTjMyMTE3MDgyDQpOSjA3MTRDT0UxNCwyMDE0LTA3LTI0LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI4MCxTQU1OMzIxMTcwODQNCk5KMDcxNFRYRTEsMjAxNC0wNy0yNCxVbml0ZWQgU3RhdGVzLCBUZXhhcywgQmFzdHJvcCxFcXVpbmUsT1A5NzEzMDIsU0FNTjMyMTE3NDI0DQpOSjA3MTRUWEUyLDIwMTQtMDctMjQsVW5pdGVkIFN0YXRlcywgVGV4YXMsIEJhc3Ryb3AsRXF1aW5lLE9QOTcxMzAzLFNBTU4zMjExNzQyNQ0KTkowNzE0VFhFMywyMDE0LTA3LTI0LFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBUcmF2aXMsRXF1aW5lLE9QOTcxMzA0LFNBTU4zMjExNzQyNg0KTkowNzE0VFhFNCwyMDE0LTA3LTI0LFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBUcmF2aXMsRXF1aW5lLE9QOTcxMzA1LFNBTU4zMjExNzQyNw0KTkowNzE0Q09FMTAsMjAxNC0wNy0yMyxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEyNzYsU0FNTjMyMTE3MDgwDQpOSjA3MTRDT0UxMSwyMDE0LTA3LTIzLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBFbCBQYXNvLEVxdWluZSxPUDk3MTI3NyxTQU1OMzIxMTcwODENCk5KMDcxNENPRTksMjAxNC0wNy0yMixVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEyNzUsU0FNTjMyMTE3MDc5DQpOSjA3MTRDT0U1LDIwMTQtMDctMjEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjcxLFNBTU4zMjExNzA3NQ0KTkowNzE0Q09FNiwyMDE0LTA3LTIxLFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI3MixTQU1OMzIxMTcwNzYNCk5KMDcxNENPRTcsMjAxNC0wNy0yMSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgQm91bGRlcixFcXVpbmUsT1A5NzEyNzMsU0FNTjMyMTE3MDc3DQpOSjA3MTRDT0U4LDIwMTQtMDctMjEsVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIEJvdWxkZXIsRXF1aW5lLE9QOTcxMjc0LFNBTU4zMjExNzA3OA0KTkowNzE0VFhCMSwyMDE0LTA3LTIxLFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBCYXN0cm9wLEJvdmluZSxPUDk3MTMwMCxTQU1OMzIxMTc0MjINCk5KMDcxNFRYQjIsMjAxNC0wNy0yMSxVbml0ZWQgU3RhdGVzLCBUZXhhcywgQmFzdHJvcCxCb3ZpbmUsT1A5NzEzMDEsU0FNTjMyMTE3NDIzDQpOSjA3MTRDT0U0LDIwMTQtMDctMTksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjcwLFNBTU4zMjExNzA3NA0KTkowNzE0Q09FMywyMDE0LTA3LTE4LFVuaXRlZCBTdGF0ZXMsIENvbG9yYWRvLCBXZWxkLEVxdWluZSxPUDk3MTI2OSxTQU1OMzIxMTcwNzMNCk5KMDcxNENPRTEsMjAxNC0wNy0wOSxVbml0ZWQgU3RhdGVzLCBDb2xvcmFkbywgV2VsZCxFcXVpbmUsT1A5NzEyNjcsU0FNTjMyMTE3MDcxDQpOSjA3MTRDT0UyLDIwMTQtMDctMDksVW5pdGVkIFN0YXRlcywgQ29sb3JhZG8sIFdlbGQsRXF1aW5lLE9QOTcxMjY4LFNBTU4zMjExNzA3Mg0KTkowNjE0VFhFMSwyMDE0LTA2LTExLFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBTYW4gUGF0cmljaW8sRXF1aW5lLE9QOTcxMjY2LFNBTU4zMjExNzA3MA0KTkowNTE0VFhFMSwyMDE0LTA1LTIwLFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBLaW5uZXksRXF1aW5lLE9QOTcxMjY0LFNBTU4zMjExNzA2OA0KTkowNTE0VFhFMiwyMDE0LTA1LTIwLFVuaXRlZCBTdGF0ZXMsIFRleGFzLCBLaW5uZXksRXF1aW5lLE9QOTcxMjY1LFNBTU4zMjExNzA2OQ0KTkowMTEzQ0hCLDIwMTMtMDEtMTMsTWV4aWNvLCBDaGlodWFodWEsLEJvdmluZSxPUDk3MTI2MyxTQU1OMzIxMTcwNjcNCk5KMDYxMk5NRTYsMjAxMi0wNi0xNCxVbml0ZWQgU3RhdGVzLCBOZXcgTWV4aWNvLCBTb2NvcnJvLEVxdWluZSxPUDk3MTI2MSxTQU1OMzIxMTcwNjUNCk5KMDYxMk5NRTcsMjAxMi0wNi0xNCxVbml0ZWQgU3RhdGVzLCBOZXcgTWV4aWNvLCBTb2NvcnJvLEVxdWluZSxPUDk3MTI2MixTQU1OMzIxMTcwNjYNCk5KMDYxMk5NRTUsMjAxMi0wNi0xMyxVbml0ZWQgU3RhdGVzLCBOZXcgTWV4aWNvLCBTYW4gTWlndWVsLEVxdWluZSxPUDk3MTI2MCxTQU1OMzIxMTcwNjQNCk5KMDUxMk5NRTEsMjAxMi0wNS0yOSxVbml0ZWQgU3RhdGVzLCBOZXcgTWV4aWNvLCBWYWxlbmNpYSxFcXVpbmUsT1A5NzEyNTksU0FNTjMyMTE3MDYzDQo=').then(res => res.blob()).then(blob => {
+      const downloadURL = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      document.body.appendChild(a);
+      a.href = downloadURL;
+      a.download = 'genome_sequences.csv'; a.click();
+      window.URL.revokeObjectURL(downloadURL);
+      document.body.removeChild(a);
+        });"><button class="btn btn-info downloadthis  data-button" id="dnldts48863"><i class="bi bi-download"></i> Get Table </button></a> <strong>Sequence accession numbers</strong> (<em>22 kb, csv</em>)</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="read-data" class="level3">
+<h3 class="anchored" data-anchor-id="read-data">Read Data</h3>
+<p>Read sequence accession numbers from archived file on <a href="https://osf.io/ghzfq/">Open Science Framework</a>. Also available as supplemental data with publication.</p>
+<div class="cell">
+<details open="">
+<summary>Hide code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>seq_accessions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://osf.io/download/zytwj/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details open="">
+<summary>Hide code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>seq_accessions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 16%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">sequence_name</th>
+<th style="text-align: left;">collection_date</th>
+<th style="text-align: left;">country</th>
+<th style="text-align: left;">state</th>
+<th style="text-align: left;">county</th>
+<th style="text-align: left;">host</th>
+<th style="text-align: left;">GenBank_Accession</th>
+<th style="text-align: left;">SRA_Accession</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NJ0116COB</td>
+<td style="text-align: left;">2016-01-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Yuma</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971456</td>
+<td style="text-align: left;">SAMN32126714</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1215NEB</td>
+<td style="text-align: left;">2015-12-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971455</td>
+<td style="text-align: left;">SAMN32126713</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1115COB7</td>
+<td style="text-align: left;">2015-11-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Garfield</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971454</td>
+<td style="text-align: left;">SAMN32126712</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1115COB2</td>
+<td style="text-align: left;">2015-11-10</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Eagle</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971452</td>
+<td style="text-align: left;">SAMN32126710</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1115COB3</td>
+<td style="text-align: left;">2015-11-10</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Eagle</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971453</td>
+<td style="text-align: left;">SAMN32126711</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1115COE6</td>
+<td style="text-align: left;">2015-11-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971499</td>
+<td style="text-align: left;">SAMN32116139</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1115COB1</td>
+<td style="text-align: left;">2015-11-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Garfield</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971451</td>
+<td style="text-align: left;">SAMN32126709</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1115COE5</td>
+<td style="text-align: left;">2015-11-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Elbert</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971498</td>
+<td style="text-align: left;">SAMN32116138</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1115COE4</td>
+<td style="text-align: left;">2015-11-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971497</td>
+<td style="text-align: left;">SAMN32116137</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1115COE1</td>
+<td style="text-align: left;">2015-11-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Elbert</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971494</td>
+<td style="text-align: left;">SAMN32116134</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1115COE2</td>
+<td style="text-align: left;">2015-11-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Elbert</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971495</td>
+<td style="text-align: left;">SAMN32116135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1115COE3</td>
+<td style="text-align: left;">2015-11-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Elbert</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971496</td>
+<td style="text-align: left;">SAMN32116136</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COB4</td>
+<td style="text-align: left;">2015-10-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Delta</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971443</td>
+<td style="text-align: left;">SAMN32126621</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015SDB3</td>
+<td style="text-align: left;">2015-10-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Lawrence</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971448</td>
+<td style="text-align: left;">SAMN32126706</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COE11</td>
+<td style="text-align: left;">2015-10-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Garfield</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971493</td>
+<td style="text-align: left;">SAMN32116133</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015SDB2</td>
+<td style="text-align: left;">2015-10-26</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Fall River</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971447</td>
+<td style="text-align: left;">SAMN32126705</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015SDB1</td>
+<td style="text-align: left;">2015-10-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Custer</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971446</td>
+<td style="text-align: left;">SAMN32126704</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE10</td>
+<td style="text-align: left;">2015-10-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Elbert</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971492</td>
+<td style="text-align: left;">SAMN32115991</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015WYE</td>
+<td style="text-align: left;">2015-10-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Crook</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971450</td>
+<td style="text-align: left;">SAMN32126708</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE9</td>
+<td style="text-align: left;">2015-10-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971491</td>
+<td style="text-align: left;">SAMN32115990</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015UTB</td>
+<td style="text-align: left;">2015-10-13</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Utah</td>
+<td style="text-align: left;">Uintah</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971449</td>
+<td style="text-align: left;">SAMN32126707</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE6</td>
+<td style="text-align: left;">2015-10-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971488</td>
+<td style="text-align: left;">SAMN32115987</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COE7</td>
+<td style="text-align: left;">2015-10-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971489</td>
+<td style="text-align: left;">SAMN32115988</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE8</td>
+<td style="text-align: left;">2015-10-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Garfield</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971490</td>
+<td style="text-align: left;">SAMN32115989</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COB1</td>
+<td style="text-align: left;">2015-10-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971442</td>
+<td style="text-align: left;">SAMN32126620</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE5</td>
+<td style="text-align: left;">2015-10-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Broomfield</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971487</td>
+<td style="text-align: left;">SAMN32115986</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COE4</td>
+<td style="text-align: left;">2015-10-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Fremont</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971486</td>
+<td style="text-align: left;">SAMN32115985</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE1</td>
+<td style="text-align: left;">2015-10-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971483</td>
+<td style="text-align: left;">SAMN32115982</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015COE2</td>
+<td style="text-align: left;">2015-10-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Douglas</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971484</td>
+<td style="text-align: left;">SAMN32115983</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015COE3</td>
+<td style="text-align: left;">2015-10-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971485</td>
+<td style="text-align: left;">SAMN32115984</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1015NEE</td>
+<td style="text-align: left;">2015-10-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Banner</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971445</td>
+<td style="text-align: left;">SAMN32126703</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1015NEB</td>
+<td style="text-align: left;">2015-10-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971444</td>
+<td style="text-align: left;">SAMN32126702</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COE10</td>
+<td style="text-align: left;">2015-09-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Garfield</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971482</td>
+<td style="text-align: left;">SAMN32115981</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE9</td>
+<td style="text-align: left;">2015-09-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Fremont</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971481</td>
+<td style="text-align: left;">SAMN32115980</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915NEB2</td>
+<td style="text-align: left;">2015-09-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971424</td>
+<td style="text-align: left;">SAMN32126602</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE8</td>
+<td style="text-align: left;">2015-09-27</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971480</td>
+<td style="text-align: left;">SAMN32115979</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915WYB5</td>
+<td style="text-align: left;">2015-09-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Converse</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971440</td>
+<td style="text-align: left;">SAMN32126618</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE7</td>
+<td style="text-align: left;">2015-09-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Moffat</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971479</td>
+<td style="text-align: left;">SAMN32115978</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915NEB1</td>
+<td style="text-align: left;">2015-09-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971423</td>
+<td style="text-align: left;">SAMN32126601</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COB6</td>
+<td style="text-align: left;">2015-09-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971422</td>
+<td style="text-align: left;">SAMN32126600</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COE6</td>
+<td style="text-align: left;">2015-09-17</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971478</td>
+<td style="text-align: left;">SAMN32115977</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COB4</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mineral</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971420</td>
+<td style="text-align: left;">SAMN32126598</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COB5</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mineral</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971421</td>
+<td style="text-align: left;">SAMN32126599</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915NEE8</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Lincoln</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971432</td>
+<td style="text-align: left;">SAMN32126610</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915WYB2</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Albany</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971437</td>
+<td style="text-align: left;">SAMN32126615</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915WYB3</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Converse</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971438</td>
+<td style="text-align: left;">SAMN32126616</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915WYB4</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Converse</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971439</td>
+<td style="text-align: left;">SAMN32126617</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE5</td>
+<td style="text-align: left;">2015-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971477</td>
+<td style="text-align: left;">SAMN32115976</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915NEE6</td>
+<td style="text-align: left;">2015-09-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971430</td>
+<td style="text-align: left;">SAMN32126608</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915NEE7</td>
+<td style="text-align: left;">2015-09-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971431</td>
+<td style="text-align: left;">SAMN32126609</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915WYB1</td>
+<td style="text-align: left;">2015-09-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Converse</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971436</td>
+<td style="text-align: left;">SAMN32126614</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915NEE5</td>
+<td style="text-align: left;">2015-09-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971429</td>
+<td style="text-align: left;">SAMN32126607</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915WYE</td>
+<td style="text-align: left;">2015-09-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Natrona</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971441</td>
+<td style="text-align: left;">SAMN32126619</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915NEE3</td>
+<td style="text-align: left;">2015-09-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971427</td>
+<td style="text-align: left;">SAMN32126605</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915NEE4</td>
+<td style="text-align: left;">2015-09-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971428</td>
+<td style="text-align: left;">SAMN32126606</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915NEE1</td>
+<td style="text-align: left;">2015-09-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971425</td>
+<td style="text-align: left;">SAMN32126603</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915NEE2</td>
+<td style="text-align: left;">2015-09-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Scotts Bluff</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971426</td>
+<td style="text-align: left;">SAMN32126604</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915UTB</td>
+<td style="text-align: left;">2015-09-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Utah</td>
+<td style="text-align: left;">Uintah</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971435</td>
+<td style="text-align: left;">SAMN32126613</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COE4</td>
+<td style="text-align: left;">2015-09-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Routt</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971476</td>
+<td style="text-align: left;">SAMN32115975</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COB2</td>
+<td style="text-align: left;">2015-09-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Conejos</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971418</td>
+<td style="text-align: left;">SAMN32126596</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COB3</td>
+<td style="text-align: left;">2015-09-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Conejos</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971419</td>
+<td style="text-align: left;">SAMN32126597</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915SDB1</td>
+<td style="text-align: left;">2015-09-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Lawrence</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971433</td>
+<td style="text-align: left;">SAMN32126611</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915SDB2</td>
+<td style="text-align: left;">2015-09-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Lawrence</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971434</td>
+<td style="text-align: left;">SAMN32126612</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE1</td>
+<td style="text-align: left;">2015-09-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971473</td>
+<td style="text-align: left;">SAMN32115688</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0915COE2</td>
+<td style="text-align: left;">2015-09-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Douglas</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971474</td>
+<td style="text-align: left;">SAMN32115689</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0915COE3</td>
+<td style="text-align: left;">2015-09-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971475</td>
+<td style="text-align: left;">SAMN32115974</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE11</td>
+<td style="text-align: left;">2015-08-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971472</td>
+<td style="text-align: left;">SAMN32115687</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815SDE2</td>
+<td style="text-align: left;">2015-08-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Fall River</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971414</td>
+<td style="text-align: left;">SAMN32126592</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815SDB</td>
+<td style="text-align: left;">2015-08-27</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Lawrence</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971412</td>
+<td style="text-align: left;">SAMN32126590</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COB4</td>
+<td style="text-align: left;">2015-08-26</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Rio Grande</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971410</td>
+<td style="text-align: left;">SAMN32126588</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815WYE2</td>
+<td style="text-align: left;">2015-08-26</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Platte</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971417</td>
+<td style="text-align: left;">SAMN32126595</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COE9</td>
+<td style="text-align: left;">2015-08-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971470</td>
+<td style="text-align: left;">SAMN32115685</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE10</td>
+<td style="text-align: left;">2015-08-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montrose</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971471</td>
+<td style="text-align: left;">SAMN32115686</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COE8</td>
+<td style="text-align: left;">2015-08-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971469</td>
+<td style="text-align: left;">SAMN32115684</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE5</td>
+<td style="text-align: left;">2015-08-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Rio Blanco</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971466</td>
+<td style="text-align: left;">SAMN32115681</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COE6</td>
+<td style="text-align: left;">2015-08-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971467</td>
+<td style="text-align: left;">SAMN32115682</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE7</td>
+<td style="text-align: left;">2015-08-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971468</td>
+<td style="text-align: left;">SAMN32115683</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815WYE1</td>
+<td style="text-align: left;">2015-08-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Albany</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971416</td>
+<td style="text-align: left;">SAMN32126594</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE4</td>
+<td style="text-align: left;">2015-08-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montrose</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971465</td>
+<td style="text-align: left;">SAMN32115680</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COB3</td>
+<td style="text-align: left;">2015-08-14</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Delta</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971409</td>
+<td style="text-align: left;">SAMN32126587</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COB2</td>
+<td style="text-align: left;">2015-08-13</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Rio Grande</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971408</td>
+<td style="text-align: left;">SAMN32126586</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815NMB</td>
+<td style="text-align: left;">2015-08-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: left;">Santa Fe</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971411</td>
+<td style="text-align: left;">SAMN32126589</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COE3</td>
+<td style="text-align: left;">2015-08-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971464</td>
+<td style="text-align: left;">SAMN32115679</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815UTB</td>
+<td style="text-align: left;">2015-08-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Utah</td>
+<td style="text-align: left;">Grand</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971415</td>
+<td style="text-align: left;">SAMN32126593</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815COB1</td>
+<td style="text-align: left;">2015-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Delta</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971407</td>
+<td style="text-align: left;">SAMN32126585</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COE2</td>
+<td style="text-align: left;">2015-08-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Delta</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971463</td>
+<td style="text-align: left;">SAMN32115678</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0815SDE1</td>
+<td style="text-align: left;">2015-08-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">South Dakota</td>
+<td style="text-align: left;">Meade</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971413</td>
+<td style="text-align: left;">SAMN32126591</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0815COE1</td>
+<td style="text-align: left;">2015-08-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Mesa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971462</td>
+<td style="text-align: left;">SAMN32115677</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0715UTB</td>
+<td style="text-align: left;">2015-07-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Utah</td>
+<td style="text-align: left;">San Juan</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971404</td>
+<td style="text-align: left;">SAMN32118289</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0715WYE2</td>
+<td style="text-align: left;">2015-07-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Goshen</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971406</td>
+<td style="text-align: left;">SAMN32118291</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0715WYE1</td>
+<td style="text-align: left;">2015-07-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Wyoming</td>
+<td style="text-align: left;">Goshen</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971405</td>
+<td style="text-align: left;">SAMN32118290</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0715COE6</td>
+<td style="text-align: left;">2015-07-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Delta</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971461</td>
+<td style="text-align: left;">SAMN32115676</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0715COE5</td>
+<td style="text-align: left;">2015-07-13</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montezuma</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971460</td>
+<td style="text-align: left;">SAMN32115675</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0715COE4</td>
+<td style="text-align: left;">2015-07-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971459</td>
+<td style="text-align: left;">SAMN32115674</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0715COE1</td>
+<td style="text-align: left;">2015-07-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montrose</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971402</td>
+<td style="text-align: left;">SAMN32118287</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0715COE2</td>
+<td style="text-align: left;">2015-07-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montrose</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971403</td>
+<td style="text-align: left;">SAMN32118288</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0715COE3</td>
+<td style="text-align: left;">2015-07-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montezuma</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971458</td>
+<td style="text-align: left;">SAMN32115673</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0615COE</td>
+<td style="text-align: left;">2015-06-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Montezuma</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971457</td>
+<td style="text-align: left;">SAMN32115672</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0515TXE</td>
+<td style="text-align: left;">2015-05-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Reeves</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971401</td>
+<td style="text-align: left;">SAMN32118286</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0515AZE</td>
+<td style="text-align: left;">2015-05-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Arizona</td>
+<td style="text-align: left;">Maricopa</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971400</td>
+<td style="text-align: left;">SAMN32118285</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0415UTE</td>
+<td style="text-align: left;">2015-04-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Utah</td>
+<td style="text-align: left;">Kane</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971399</td>
+<td style="text-align: left;">SAMN32118284</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1114NEB</td>
+<td style="text-align: left;">2014-11-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Nebraska</td>
+<td style="text-align: left;">Wheeler</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971398</td>
+<td style="text-align: left;">SAMN32118283</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1114COE2</td>
+<td style="text-align: left;">2014-11-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Fremont</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971397</td>
+<td style="text-align: left;">SAMN32118282</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1114COB</td>
+<td style="text-align: left;">2014-11-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971396</td>
+<td style="text-align: left;">SAMN32118281</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COB7</td>
+<td style="text-align: left;">2014-10-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971386</td>
+<td style="text-align: left;">SAMN32118271</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COB6</td>
+<td style="text-align: left;">2014-10-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971385</td>
+<td style="text-align: left;">SAMN32118270</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COB2</td>
+<td style="text-align: left;">2014-10-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971381</td>
+<td style="text-align: left;">SAMN32118266</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COB3</td>
+<td style="text-align: left;">2014-10-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971382</td>
+<td style="text-align: left;">SAMN32118267</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COB4</td>
+<td style="text-align: left;">2014-10-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971383</td>
+<td style="text-align: left;">SAMN32118268</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COB5</td>
+<td style="text-align: left;">2014-10-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971384</td>
+<td style="text-align: left;">SAMN32118269</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COE10</td>
+<td style="text-align: left;">2014-10-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Arapahoe</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971395</td>
+<td style="text-align: left;">SAMN32118280</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COE9</td>
+<td style="text-align: left;">2014-10-17</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Fremont</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971394</td>
+<td style="text-align: left;">SAMN32118279</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COB1</td>
+<td style="text-align: left;">2014-10-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971380</td>
+<td style="text-align: left;">SAMN32118265</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COE7</td>
+<td style="text-align: left;">2014-10-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971392</td>
+<td style="text-align: left;">SAMN32118277</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COE8</td>
+<td style="text-align: left;">2014-10-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971393</td>
+<td style="text-align: left;">SAMN32118278</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COE3</td>
+<td style="text-align: left;">2014-10-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971388</td>
+<td style="text-align: left;">SAMN32118273</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COE4</td>
+<td style="text-align: left;">2014-10-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971389</td>
+<td style="text-align: left;">SAMN32118274</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COE5</td>
+<td style="text-align: left;">2014-10-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971390</td>
+<td style="text-align: left;">SAMN32118275</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ1014COE6</td>
+<td style="text-align: left;">2014-10-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971391</td>
+<td style="text-align: left;">SAMN32118276</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ1014COE1</td>
+<td style="text-align: left;">2014-10-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Fremont</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971387</td>
+<td style="text-align: left;">SAMN32118272</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE13</td>
+<td style="text-align: left;">2014-09-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971378</td>
+<td style="text-align: left;">SAMN32118263</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE14</td>
+<td style="text-align: left;">2014-09-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971379</td>
+<td style="text-align: left;">SAMN32118264</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COB1</td>
+<td style="text-align: left;">2014-09-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971363</td>
+<td style="text-align: left;">SAMN32117556</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COB2</td>
+<td style="text-align: left;">2014-09-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971364</td>
+<td style="text-align: left;">SAMN32117557</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COB3</td>
+<td style="text-align: left;">2014-09-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971365</td>
+<td style="text-align: left;">SAMN32117558</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE11</td>
+<td style="text-align: left;">2014-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971376</td>
+<td style="text-align: left;">SAMN32118261</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE12</td>
+<td style="text-align: left;">2014-09-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971377</td>
+<td style="text-align: left;">SAMN32118262</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE10</td>
+<td style="text-align: left;">2014-09-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971375</td>
+<td style="text-align: left;">SAMN32118260</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE8</td>
+<td style="text-align: left;">2014-09-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971373</td>
+<td style="text-align: left;">SAMN32118258</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE9</td>
+<td style="text-align: left;">2014-09-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971374</td>
+<td style="text-align: left;">SAMN32118259</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE7</td>
+<td style="text-align: left;">2014-09-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971372</td>
+<td style="text-align: left;">SAMN32118257</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE5</td>
+<td style="text-align: left;">2014-09-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971370</td>
+<td style="text-align: left;">SAMN32118255</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE6</td>
+<td style="text-align: left;">2014-09-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Pueblo</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971371</td>
+<td style="text-align: left;">SAMN32118256</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE1</td>
+<td style="text-align: left;">2014-09-03</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Douglas</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971366</td>
+<td style="text-align: left;">SAMN32117559</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE2</td>
+<td style="text-align: left;">2014-09-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971367</td>
+<td style="text-align: left;">SAMN32117560</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0914COE3</td>
+<td style="text-align: left;">2014-09-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Logan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971368</td>
+<td style="text-align: left;">SAMN32117561</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0914COE4</td>
+<td style="text-align: left;">2014-09-02</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971369</td>
+<td style="text-align: left;">SAMN32117562</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE53</td>
+<td style="text-align: left;">2014-08-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971362</td>
+<td style="text-align: left;">SAMN32117555</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE51</td>
+<td style="text-align: left;">2014-08-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Arapahoe</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971360</td>
+<td style="text-align: left;">SAMN32117553</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE52</td>
+<td style="text-align: left;">2014-08-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Arapahoe</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971361</td>
+<td style="text-align: left;">SAMN32117554</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE48</td>
+<td style="text-align: left;">2014-08-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971357</td>
+<td style="text-align: left;">SAMN32117550</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE49</td>
+<td style="text-align: left;">2014-08-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Morgan</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971358</td>
+<td style="text-align: left;">SAMN32117551</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE50</td>
+<td style="text-align: left;">2014-08-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971359</td>
+<td style="text-align: left;">SAMN32117552</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE45</td>
+<td style="text-align: left;">2014-08-22</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971354</td>
+<td style="text-align: left;">SAMN32117547</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE46</td>
+<td style="text-align: left;">2014-08-22</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971355</td>
+<td style="text-align: left;">SAMN32117548</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE47</td>
+<td style="text-align: left;">2014-08-22</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971356</td>
+<td style="text-align: left;">SAMN32117549</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE43</td>
+<td style="text-align: left;">2014-08-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971352</td>
+<td style="text-align: left;">SAMN32117545</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE44</td>
+<td style="text-align: left;">2014-08-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971353</td>
+<td style="text-align: left;">SAMN32117546</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE39</td>
+<td style="text-align: left;">2014-08-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971348</td>
+<td style="text-align: left;">SAMN32117541</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE40</td>
+<td style="text-align: left;">2014-08-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971349</td>
+<td style="text-align: left;">SAMN32117542</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE41</td>
+<td style="text-align: left;">2014-08-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971350</td>
+<td style="text-align: left;">SAMN32117543</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE42</td>
+<td style="text-align: left;">2014-08-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971351</td>
+<td style="text-align: left;">SAMN32117544</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE37</td>
+<td style="text-align: left;">2014-08-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971346</td>
+<td style="text-align: left;">SAMN32117539</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE36</td>
+<td style="text-align: left;">2014-08-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971345</td>
+<td style="text-align: left;">SAMN32117538</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE38</td>
+<td style="text-align: left;">2014-08-16</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971347</td>
+<td style="text-align: left;">SAMN32117540</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE32</td>
+<td style="text-align: left;">2014-08-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971341</td>
+<td style="text-align: left;">SAMN32117534</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE33</td>
+<td style="text-align: left;">2014-08-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971342</td>
+<td style="text-align: left;">SAMN32117535</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE34</td>
+<td style="text-align: left;">2014-08-15</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971343</td>
+<td style="text-align: left;">SAMN32117536</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE35</td>
+<td style="text-align: left;">2014-08-13</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971344</td>
+<td style="text-align: left;">SAMN32117537</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE27</td>
+<td style="text-align: left;">2014-08-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971336</td>
+<td style="text-align: left;">SAMN32117529</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE29</td>
+<td style="text-align: left;">2014-08-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Adams</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971338</td>
+<td style="text-align: left;">SAMN32117531</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE30</td>
+<td style="text-align: left;">2014-08-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971339</td>
+<td style="text-align: left;">SAMN32117532</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE31</td>
+<td style="text-align: left;">2014-08-12</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971340</td>
+<td style="text-align: left;">SAMN32117533</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE24</td>
+<td style="text-align: left;">2014-08-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Adams</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971333</td>
+<td style="text-align: left;">SAMN32117526</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE25</td>
+<td style="text-align: left;">2014-08-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Adams</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971334</td>
+<td style="text-align: left;">SAMN32117527</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE26</td>
+<td style="text-align: left;">2014-08-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971335</td>
+<td style="text-align: left;">SAMN32117528</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE23</td>
+<td style="text-align: left;">2014-08-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Adams</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971332</td>
+<td style="text-align: left;">SAMN32117454</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE28</td>
+<td style="text-align: left;">2014-08-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971337</td>
+<td style="text-align: left;">SAMN32117530</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE21</td>
+<td style="text-align: left;">2014-08-08</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971330</td>
+<td style="text-align: left;">SAMN32117452</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE20</td>
+<td style="text-align: left;">2014-08-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971329</td>
+<td style="text-align: left;">SAMN32117451</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE22</td>
+<td style="text-align: left;">2014-08-07</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971331</td>
+<td style="text-align: left;">SAMN32117453</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE19</td>
+<td style="text-align: left;">2014-08-06</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971328</td>
+<td style="text-align: left;">SAMN32117450</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE13</td>
+<td style="text-align: left;">2014-08-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971323</td>
+<td style="text-align: left;">SAMN32117445</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE15</td>
+<td style="text-align: left;">2014-08-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971325</td>
+<td style="text-align: left;">SAMN32117447</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE16</td>
+<td style="text-align: left;">2014-08-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Jefferson</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971326</td>
+<td style="text-align: left;">SAMN32117448</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE17</td>
+<td style="text-align: left;">2014-08-05</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971327</td>
+<td style="text-align: left;">SAMN32117449</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COB</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971310</td>
+<td style="text-align: left;">SAMN32117432</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE6</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971316</td>
+<td style="text-align: left;">SAMN32117438</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE7</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971317</td>
+<td style="text-align: left;">SAMN32117439</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE8</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971318</td>
+<td style="text-align: left;">SAMN32117440</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE9</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971319</td>
+<td style="text-align: left;">SAMN32117441</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE10</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971320</td>
+<td style="text-align: left;">SAMN32117442</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE11</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971321</td>
+<td style="text-align: left;">SAMN32117443</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE14</td>
+<td style="text-align: left;">2014-08-04</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971324</td>
+<td style="text-align: left;">SAMN32117446</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE1</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971311</td>
+<td style="text-align: left;">SAMN32117433</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE2</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971312</td>
+<td style="text-align: left;">SAMN32117434</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE3</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971313</td>
+<td style="text-align: left;">SAMN32117435</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE4</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971314</td>
+<td style="text-align: left;">SAMN32117436</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0814COE5</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Douglas</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971315</td>
+<td style="text-align: left;">SAMN32117437</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0814COE12</td>
+<td style="text-align: left;">2014-08-01</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971322</td>
+<td style="text-align: left;">SAMN32117444</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE29</td>
+<td style="text-align: left;">2014-07-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971295</td>
+<td style="text-align: left;">SAMN32117099</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE30</td>
+<td style="text-align: left;">2014-07-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971296</td>
+<td style="text-align: left;">SAMN32117418</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE31</td>
+<td style="text-align: left;">2014-07-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971297</td>
+<td style="text-align: left;">SAMN32117419</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE32</td>
+<td style="text-align: left;">2014-07-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971298</td>
+<td style="text-align: left;">SAMN32117420</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE33</td>
+<td style="text-align: left;">2014-07-31</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971299</td>
+<td style="text-align: left;">SAMN32117421</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE25</td>
+<td style="text-align: left;">2014-07-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971291</td>
+<td style="text-align: left;">SAMN32117095</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE26</td>
+<td style="text-align: left;">2014-07-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971292</td>
+<td style="text-align: left;">SAMN32117096</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE28</td>
+<td style="text-align: left;">2014-07-30</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971294</td>
+<td style="text-align: left;">SAMN32117098</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE22</td>
+<td style="text-align: left;">2014-07-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971288</td>
+<td style="text-align: left;">SAMN32117092</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE23</td>
+<td style="text-align: left;">2014-07-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Larimer</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971289</td>
+<td style="text-align: left;">SAMN32117093</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE24</td>
+<td style="text-align: left;">2014-07-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971290</td>
+<td style="text-align: left;">SAMN32117094</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXE8</td>
+<td style="text-align: left;">2014-07-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Travis</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971309</td>
+<td style="text-align: left;">SAMN32117431</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE27</td>
+<td style="text-align: left;">2014-07-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971293</td>
+<td style="text-align: left;">SAMN32117097</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXE6</td>
+<td style="text-align: left;">2014-07-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Falls</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971307</td>
+<td style="text-align: left;">SAMN32117429</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714TXE7</td>
+<td style="text-align: left;">2014-07-28</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Falls</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971308</td>
+<td style="text-align: left;">SAMN32117430</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE13</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971279</td>
+<td style="text-align: left;">SAMN32117083</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE15</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971281</td>
+<td style="text-align: left;">SAMN32117085</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE16</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971282</td>
+<td style="text-align: left;">SAMN32117086</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE17</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971283</td>
+<td style="text-align: left;">SAMN32117087</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE18</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971284</td>
+<td style="text-align: left;">SAMN32117088</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE19</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971285</td>
+<td style="text-align: left;">SAMN32117089</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE20</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971286</td>
+<td style="text-align: left;">SAMN32117090</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE21</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971287</td>
+<td style="text-align: left;">SAMN32117091</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXE5</td>
+<td style="text-align: left;">2014-07-25</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Bastrop</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971306</td>
+<td style="text-align: left;">SAMN32117428</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE12</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971278</td>
+<td style="text-align: left;">SAMN32117082</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE14</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971280</td>
+<td style="text-align: left;">SAMN32117084</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714TXE1</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Bastrop</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971302</td>
+<td style="text-align: left;">SAMN32117424</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXE2</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Bastrop</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971303</td>
+<td style="text-align: left;">SAMN32117425</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714TXE3</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Travis</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971304</td>
+<td style="text-align: left;">SAMN32117426</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXE4</td>
+<td style="text-align: left;">2014-07-24</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Travis</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971305</td>
+<td style="text-align: left;">SAMN32117427</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE10</td>
+<td style="text-align: left;">2014-07-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971276</td>
+<td style="text-align: left;">SAMN32117080</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE11</td>
+<td style="text-align: left;">2014-07-23</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">El Paso</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971277</td>
+<td style="text-align: left;">SAMN32117081</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE9</td>
+<td style="text-align: left;">2014-07-22</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971275</td>
+<td style="text-align: left;">SAMN32117079</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE5</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971271</td>
+<td style="text-align: left;">SAMN32117075</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE6</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971272</td>
+<td style="text-align: left;">SAMN32117076</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE7</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971273</td>
+<td style="text-align: left;">SAMN32117077</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE8</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Boulder</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971274</td>
+<td style="text-align: left;">SAMN32117078</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714TXB1</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Bastrop</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971300</td>
+<td style="text-align: left;">SAMN32117422</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714TXB2</td>
+<td style="text-align: left;">2014-07-21</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Bastrop</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971301</td>
+<td style="text-align: left;">SAMN32117423</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE4</td>
+<td style="text-align: left;">2014-07-19</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971270</td>
+<td style="text-align: left;">SAMN32117074</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE3</td>
+<td style="text-align: left;">2014-07-18</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971269</td>
+<td style="text-align: left;">SAMN32117073</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0714COE1</td>
+<td style="text-align: left;">2014-07-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971267</td>
+<td style="text-align: left;">SAMN32117071</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0714COE2</td>
+<td style="text-align: left;">2014-07-09</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Colorado</td>
+<td style="text-align: left;">Weld</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971268</td>
+<td style="text-align: left;">SAMN32117072</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0614TXE1</td>
+<td style="text-align: left;">2014-06-11</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">San Patricio</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971266</td>
+<td style="text-align: left;">SAMN32117070</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0514TXE1</td>
+<td style="text-align: left;">2014-05-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Kinney</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971264</td>
+<td style="text-align: left;">SAMN32117068</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0514TXE2</td>
+<td style="text-align: left;">2014-05-20</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Texas</td>
+<td style="text-align: left;">Kinney</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971265</td>
+<td style="text-align: left;">SAMN32117069</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0113CHB</td>
+<td style="text-align: left;">2013-01-13</td>
+<td style="text-align: left;">Mexico</td>
+<td style="text-align: left;">Chihuahua</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Bovine</td>
+<td style="text-align: left;">OP971263</td>
+<td style="text-align: left;">SAMN32117067</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0612NME6</td>
+<td style="text-align: left;">2012-06-14</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: left;">Socorro</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971261</td>
+<td style="text-align: left;">SAMN32117065</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0612NME7</td>
+<td style="text-align: left;">2012-06-14</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: left;">Socorro</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971262</td>
+<td style="text-align: left;">SAMN32117066</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NJ0612NME5</td>
+<td style="text-align: left;">2012-06-13</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: left;">San Miguel</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971260</td>
+<td style="text-align: left;">SAMN32117064</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NJ0512NME1</td>
+<td style="text-align: left;">2012-05-29</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">New Mexico</td>
+<td style="text-align: left;">Valencia</td>
+<td style="text-align: left;">Equine</td>
+<td style="text-align: left;">OP971259</td>
+<td style="text-align: left;">SAMN32117063</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-right">Built with <a href="https://quarto.org/">Quarto</a></div>
+  </div>
+</footer>
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

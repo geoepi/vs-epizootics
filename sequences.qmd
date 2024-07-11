@@ -1,0 +1,61 @@
+---
+title: " "
+format:
+  html: 
+    df-print: kable
+    code-fold: show
+    code-summary: "Hide code"
+    code-overflow: wrap
+    toc-title: Page Contents
+    toc: true
+    toc-depth: 2
+    toc-location: right
+    number-sections: false
+    html-math-method: katex
+    smooth-scroll: true
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+```{=html}
+<style type="text/css">
+
+body, td {
+   font-size: 13pt;
+}
+code.r{
+  font-size: 9pt;
+}
+pre {
+  font-size: 11pt
+}
+</style>
+```
+
+::: {.callout-note icon=true}
+#### VSV Sequences    
+Sequence data has been submitted to [GenBank](https://www.ncbi.nlm.nih.gov/genbank/) but may not yet been released due to a pending data report publication still in review.  Code below will provide an accession numbers table.  This page will be updated when genomic data becomes publicly available.  
+:::
+
+
+#### Download *sequence accession numbers* 
+{{< downloadthis assets/genome_sequences.csv dname=genome_sequences label="Get Table" icon=download type=info class=data-button >}}    **Sequence accession numbers** (*22 kb, csv*) 
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+#Load needed R-packages to execute code
+
+library(tidyverse)
+library(here)
+```
+
+### Read Data    
+Read sequence accession numbers from archived file on [Open Science Framework](https://osf.io/ghzfq/).  Also available as supplemental data with publication.    
+```{r message=FALSE, warning=FALSE}
+
+seq_accessions <- read_csv("https://osf.io/download/zytwj/")
+
+```
+
+```{r}
+seq_accessions
+```

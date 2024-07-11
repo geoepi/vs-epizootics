@@ -8,6 +8,8 @@ website:
     left:
       - href: overview.qmd
         text: Overview 
+      - href: sequences.qmd
+        text: Genomes
     right:
       - href: https://geoepi.github.io/
         text: GeoEpi
