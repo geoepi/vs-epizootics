@@ -1,4 +1,4 @@
-phylodynamic_process <- plot_fixed_marginals <- function(tree, mrsd = "2016-01-10"){
+phylodynamic_process <- function(tree, mrsd = "2016-01-10"){
   
   options(ignore.negative.edge=TRUE)
   
