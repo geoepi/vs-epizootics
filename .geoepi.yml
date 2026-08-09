@@ -1,0 +1,26 @@
+schema_version: 1
+
+project_id: vsv-risk
+subproject_id: vs-epizootics
+
+title: Interrogating Genomes and Geography to Unravel Multiyear Vesicular Stomatitis Epizootics
+summary: >
+  Phylogeography, phylodynamics, and geostatistical analysis of 2014-15 outbreak cycle.
+
+lead:
+  name: John Humphreys
+  github: JMHumphreys
+
+status: complete
+current_focus: Results published.
+
+repository:
+  canonical: geoepi/vs-epizootics
+  upstream: null
+
+compute:
+  - local
+
+next_milestone:
+  description: Complete
+  target: 2024-07-10
